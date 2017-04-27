@@ -1,0 +1,4 @@
+transition : fade
+slide-number: true
+theme-override : PITCHME.css
+footnote : "Xavier F. Gouchet / @xgouchet / CC BY NC 4.0"
