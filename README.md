@@ -6,8 +6,8 @@ This repository contains my talks in markdown format, readable via [GitPitch](ht
 
 ## Licence
 
-Talks by [Xavier F. GOUCHET](https://github.com/xgouchet) is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License. 
+Talks by [Xavier F. GOUCHET](https://github.com/xgouchet) is licensed under a [Creative Commons Attribution-NonCommercial 4.0](https://creativecommons.org/licenses/by-nc/4.0/) International License. 
 
 ## Credits
 
-All quotes are credited to their respective authors, when known. If a quote is uncredited, please le
+All quotes are credited to their respective authors, when known. If a quote is uncredited, please let me know so that I can improve my slides. 
