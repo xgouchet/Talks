@@ -1,9 +1,11 @@
-# Talks
+# Talk : Legacy Code
 
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/xgouchet/Talks/master?grs=github&t=white) 
-![CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc/4.0/80x15.png) 
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/xgouchet/Talks/LegacyCode?grs=github&t=white) 
+[![CC BY-NC 4.0](https://img.shields.io/badge/CC-BY--NC-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/2.0/)
 
-> _This repository contains my talks in markdown format, readable via [GitPitch](https://gitpitch.com/xgouchet/Talks)._
+## History
+
+This talk was written for a presentation at the [Wild Code School](https://wildcodeschool.fr/la-loupe/).
 
 ## Licence
 
