@@ -1,15 +1,57 @@
 
-# Writing tests with kotlin
+# What's new in our test libraries
 
-_Deezer_ 
+_Deezer_
 
 ---
 
-## Writing tests
+# Writing tests with kotlin
+
+_Deezer_
+
+---
+
+## Writing tests the old way
+
+> ♫ You're thinking of me, the same old way.  ♪
+> 
+> — The Beatles
+
++++
+
+### ⇧⌘A ¹ + Convert Java File to Kotlin File
+
+_or_ 
+
+### ⌥⇧⌘J ²
+
+##### <small></small>
+
+<small>¹ Ctrl+Shift+A on real OSes</small>
+
+<small>² Ctrl+Alt+Shift+K on real OSes</small>
+
++++
+
+```kotlin
+@RunWith(RobolectricTestRunner::class)
+class FooTest {
+    @Test
+    fun returns_bar() {
+        val foo = Foo("hi")
+        val result = foo.bar()
+        assertThat(result).isEqualTo(expectedBar)
+    }
+}
+```
+---
+
+## Writing tests the new way
 
 > ♫ I'm always testing the sh** around me. ♪
 > 
 > — Korn
+
 
 +++
 
@@ -241,6 +283,84 @@ class FooContract: SimpleContract({
  - can have `describe` / `context` as children
  - `xcontextWithData` to ignore
  - can have as much as 7 input values, and one expected output (each with their own type)
+
+
+
+---
+
+## Mocks
+
+> ♫ First you mock it, rock it and then you stock it. ♪
+> 
+> — Beastie Boys
+
++++
+
+### As input
+
+```kotlin
+class FooContract: SimpleContract({
+    describe("foo") {
+        context("bar") {
+            val mock : Bacon = mock {
+                on { getBacon() } doReturn "with eggs"
+            }
+            // …
+        }
+    }
+}
+```
+
++++
+
+### As callback
+
+```kotlin
+class FooContract: SimpleContract({
+    describe("foo") {
+        context("bar") {
+            val mock : Listener = mock()
+            it("baz") {
+                // …
+                verify(mock).onEvent(any())
+                verify(mock).spam = 42
+            }
+        }
+    }
+}
+```
+
++++
+
+### In order
+
+```kotlin
+inOrder(a,b) {
+  verify(a).doSomething()
+  verify(b).doSomething()
+}
+```
+
+
+### Argument matcher
+
+```
+    verify(mock).bar(argThat { property == 42 } )
+    verify(mock).bar(argForWhich { property == 42 } )
+    verify(mock).bar(argWhere { property == 42 } )
+    verify(mock).bar(check { 
+      assertThat(it.property).isEqualTo(42)
+      assertThat(it.other).hasLength(69);
+    })
+```
+
++++
+
+### Caveats
+
+ - Kotlin classes are final by default
+ - Can only mock `open class` or `interface`
+ - Meaning you should code properly !
 
 
 ---
