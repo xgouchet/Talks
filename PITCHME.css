@@ -4,7 +4,7 @@
 }
 
 .reveal blockquote {
-    background : #eeffff;
+    background : #ecf0f1;
     color : #000;
 }
 .reveal blockquote p {
@@ -21,12 +21,14 @@
     text-align : right;
     font-style : italic;
 }
-.reveal blockquote, .reveal pre, .reveal section img {
+.reveal blockquote, 
+.reveal pre, 
+.reveal section img {
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
-.hljs {
-    background : #546e7a;
+.hljs, .lang-plain {
+    background : #bdc3c7;
 }
 
 .reveal img.photo { 
@@ -47,7 +49,30 @@
     vertical-align: bottom;
 }
 
+.reveal img.logo-inline {
+    padding : 0em;
+    height : 1em;
+    width : auto;
+    border : 0;
+    vertical-align: bottom;
+    box-shadow: 0 0 0 0;
+}
+
 .reveal img.white {
     background : white;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.reveal h1 code,
+.reveal h2 code,
+.reveal h3 code,
+.reveal h4 code,
+.reveal h5 code,
+.reveal li code {
+    background : #ecf0f1;
+    color : #c0392b;
+    padding : .15em;
+    border-radius: .25em;
+    border : 0;/*1px solid #e74c3c !important;*/
+    font-size : 80%;
 }
