@@ -11,18 +11,10 @@ _Droidcon Berlin 2017_
 ## About… Xavier F. Gouchet 
 
 <h4 class="fragment">Android Architect at <img src="logos/deezer.png" class="logo-inline"/></h4>
-#### ‘Mr Tools’ / CI / UT <!-- .element: class="fragment" -->
+#### ‘Mr Tools’ / CI Admin / UT Advocate<!-- .element: class="fragment" -->
 #### Fluent in Android since Cupcake <!-- .element: class="fragment" -->
 
 ###### <span class="fragment"><a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …</span>
-
-+++
-
-### Code reviews @ Deezer
-
- - 18 Android developers
- - 3 main repositories
- - Varied experiences and skills
 
 ---
 
@@ -31,6 +23,14 @@ _Droidcon Berlin 2017_
 > — Placebo
 
 ### Who uses code review here ? 
+
++++
+
+### Code reviews @ Deezer
+
+ - 18 Android developers
+ - 3 main repositories
+ - Varied experiences and skills
 
 ---
 
@@ -45,7 +45,7 @@ _Droidcon Berlin 2017_
  - Logic fallacies <!-- .element: class="fragment" -->
  - Typos, spelling <!-- .element: class="fragment" -->
  - Edge cases <!-- .element: class="fragment" -->
- - Deliver code without technical debt  <!-- .element: class="fragment" -->
+ - Potential technical debt  <!-- .element: class="fragment" -->
 
 +++
 
@@ -53,20 +53,19 @@ _Droidcon Berlin 2017_
 
  - Code style <!-- .element: class="fragment" -->
  - Naming conventions <!-- .element: class="fragment" -->
- - Maintainability <!-- .element: class="fragment" -->
  - Architecture <!-- .element: class="fragment" -->
  - Libraries <!-- .element: class="fragment" -->
 
 +++
 
-### Generate discussion
+### Generate discussion around…
 
  - Choices  <!-- .element: class="fragment" -->
      - Algorithm  <!-- .element: class="fragment" -->
      - Data Structure  <!-- .element: class="fragment" -->
      - Architecture <!-- .element: class="fragment" -->
      - Libraries <!-- .element: class="fragment" -->
- - Behaviors <!-- .element: class="fragment" -->
+ - Features <!-- .element: class="fragment" -->
  - Best practices <!-- .element: class="fragment" -->
 
 +++
@@ -75,15 +74,14 @@ _Droidcon Berlin 2017_
 
  - Cohesion <!-- .element: class="fragment" -->
  - Trust <!-- .element: class="fragment" -->
- - Lower linkedin factor <!-- .element: class="fragment" -->
+ - Lower “Linkedin factor” <!-- .element: class="fragment" -->
  - Asynchronous Pair Programming <!-- .element: class="fragment" -->
 
 +++
 
 ### Share knowledge
 
- - Mentor junior developers <!-- .element: class="fragment" -->
- - Onboard new developers <!-- .element: class="fragment" -->
+ - Onboard junior / new developers <!-- .element: class="fragment" -->
  - Everyone has something to teach <!-- .element: class="fragment" -->
  - Everyone has something to learn <!-- .element: class="fragment" -->
 
@@ -91,11 +89,8 @@ _Droidcon Berlin 2017_
 
 ### Downsides of code review
 
- - Less time spent delivering feature <!-- .element: class="fragment" -->
- - More time spent per ticket <!-- .element: class="fragment" -->
- - Senior dev frustration <!-- .element: class="fragment" -->
-
-##### Same rants as spending time on Unit Tests
+ - More time spent per ticket / less time spent delivering feature <!-- .element: class="fragment" -->
+ - Senior developer frustration <!-- .element: class="fragment" -->
 
 ---
 
@@ -134,7 +129,7 @@ _Droidcon Berlin 2017_
 #### Pro <!-- .element: class="fragment" -->
 
  - Continuous development <!-- .element: class="fragment" -->
- - Limit conflicts and friction <!-- .element: class="fragment" -->
+ - Limit git conflicts <!-- .element: class="fragment" -->
 
 #### Cons <!-- .element: class="fragment" -->
 
@@ -167,15 +162,6 @@ _Droidcon Berlin 2017_
 
 +++
 
-### Pair review with the author
-
- - Mentor the author <!-- .element: class="fragment" -->
- - Get in depth view <!-- .element: class="fragment" -->
- - Discuss alternatives <!-- .element: class="fragment" -->
- - Immediate feedback <!-- .element: class="fragment" -->
-
-+++
-
 ### Pair review with another developer
 
  - Provide a single feedack <!-- .element: class="fragment" -->
@@ -184,11 +170,14 @@ _Droidcon Berlin 2017_
 
 +++
 
-### Code Review Meeting
+### Code Review Meeting with the author
 
  - 3 to 7 attendees <!-- .element: class="fragment" -->
  - Only for non trivial reviews <!-- .element: class="fragment" -->
- - Commit author can guide the review <!-- .element: class="fragment" -->
+ - Mentor the author <!-- .element: class="fragment" -->
+ - Get in depth view <!-- .element: class="fragment" -->
+ - Discuss alternatives <!-- .element: class="fragment" -->
+ - Immediate feedback <!-- .element: class="fragment" -->
 
 ---
 
@@ -288,18 +277,11 @@ _Droidcon Berlin 2017_
 
 +++
 
-### Keep other channels open
-
- - Slack chanels for complicated / off-topic issues <!-- .element: class="fragment" -->
- - Face to face discussion <!-- .element: class="fragment" -->
- - Don't start the flame war <!-- .element: class="fragment" -->
-
-+++
-
 ### Overall behavior
 
  - Stay open minded <!-- .element: class="fragment" -->
  - Make it about the code, not the people <!-- .element: class="fragment" -->
+ - Don't start the flame war <!-- .element: class="fragment" -->
  - Share your knowledge <!-- .element: class="fragment" -->
  - Give as much as you receive <!-- .element: class="fragment" -->
 
@@ -307,5 +289,5 @@ _Droidcon Berlin 2017_
 
 ## Thanks for your attention
 
-#### Any Question ? 
+### Any Question ? 
 
