@@ -3,6 +3,7 @@
 
 #### An introduction to Mutation Testing
 
+
 _Droidcon Berlin 2017_ 
 
 ---
@@ -11,11 +12,10 @@ _Droidcon Berlin 2017_
 ## About… Xavier F. Gouchet 
 
 <h4 class="fragment">Android Architect at <img src="logos/deezer.png" class="logo-inline"/></h4>
-#### ‘Mr Tools’ / CI / UT <!-- .element: class="fragment" -->
+#### ‘Mr Tools’ / CI Admin / UT Advocate<!-- .element: class="fragment" -->
 #### Fluent in Android since Cupcake <!-- .element: class="fragment" -->
 
 ###### <span class="fragment"><a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …</span>
-
 
 ---
 
@@ -35,16 +35,16 @@ _Droidcon Berlin 2017_
 
 ---
 
-### Tests ensure the quality of your code, 
-## but what ensures the quality of your tests?
-
-+++
 
 ### Code has bugs <!-- .element: class="fragment" -->
 ### Tests are Code <!-- .element: class="fragment" -->
 #### ∴ <!-- .element: class="fragment" -->
 ## Tests have bugs <!-- .element: class="fragment" -->
 
++++
+
+### Tests ensure the quality of your code, 
+## but what ensures the quality of your tests?
 
 ---
 
@@ -84,12 +84,6 @@ _Droidcon Berlin 2017_
 
 ##### Code Coverage
 
----
-
-> “The edge cases are where the fun happens”
-> 
-> — Kevlin Henney 
-
 +++
 
 ![100% Coverage](img/1_1_100_coverage.jpg) <!-- .element: class="photo" -->
@@ -113,14 +107,6 @@ _Droidcon Berlin 2017_
 
 ---
 
-> ♫ I'm always testing 
-> 
-> (the sh*t around me)♪
-> 
-> — Korn
-
-+++
-
 ### The goal of tests ? 
 
  - “Verify that the code works” <!-- .element: class="fragment" -->
@@ -133,9 +119,11 @@ _Droidcon Berlin 2017_
 
 +++
 
-### Bad tests can give a false sense of security
+#### Bad tests can give 
+### a false sense of security
 
 > “We need to be as confident in the tests we code 
+> 
 > as we are in the code we test.”
 > 
 > — Me
@@ -153,7 +141,7 @@ _Droidcon Berlin 2017_
 ### Mutation Testing 101
 
 1. Write tests <!-- .element: class="fragment" -->
-1. Mutate the code <!-- .element: class="fragment" -->
+1. Mutate the code¹ <!-- .element: class="fragment" -->
 1. Watch the tests fail <!-- .element: class="fragment" -->
 1. ??? <!-- .element: class="fragment" -->
 1. Profit <!-- .element: class="fragment" -->
@@ -170,15 +158,17 @@ Write the tests <!-- .element: class="fragment" -->
 
 ### Step 2
 
-Mutate the code <!-- .element: class="fragment" -->
+Mutate the code¹ <!-- .element: class="fragment" -->
 
 Make one or more modification to the source code <!-- .element: class="fragment" -->
 
-<small class="fragment">Mutation **should** break the behavior</small>
+<small class="fragment">Mutation **should** break the behavior of the system</small>
 
 +++
 
-### * What's a mutation ?
+### ¹ What's a mutation ?
+
+#### A modification of a statement in the code <!-- .element: class="fragment" -->
 
  - Math operations switch <!-- .element: class="fragment" -->
  - Condition boundaries <!-- .element: class="fragment" -->
@@ -228,7 +218,7 @@ Watch the tests fail <!-- .element: class="fragment" -->
 
 +++
 
-### Example 2 
+### Example 
 
 ```java
 int check(boolean a, boolean b) {
@@ -247,7 +237,7 @@ void testCheck() {
 
 +++
 
-### Example 2 (mutated)
+### Example (mutated)
 
 ```java
 int check(boolean a, boolean b) {
@@ -267,7 +257,7 @@ void testCheck() {
 +++
 
 
-### Example 2 (fixed)
+### Example (fixed)
 
 
 ```java
@@ -287,22 +277,36 @@ void testCheck() {
 
 +++
 
+### Gradle Plugin
+
 ```groovy
 buildscript {
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    classpath 'pl.droidsonroids.gradle:gradle-pitest-plugin:0.0.9'
-  }
+repositories {
+ mavenCentral()
+}
+dependencies {
+ classpath 'pl.droidsonroids.gradle:gradle-pitest-plugin:0.0.9'
+}
+}
+
+apply plugin: 'pl.droidsonroids.pitest'
+```
+
++++
+
+### Gradle Plugin (2.1+)
+
+```groovy
+plugins {
+  id "pl.droidsonroids.pitest" version "0.0.9"
 }
 ```
 
 +++
 
-```groovy
-apply plugin: 'pl.droidsonroids.pitest'
+### Configuration
 
+```groovy
 pitest {
    targetClasses = ['com.example.*']
    outputFormats = ['XML', 'HTML']
@@ -352,15 +356,16 @@ pitest {
 ### My own recommendations
 
  - Only used locally in the TDD process <!-- .element: class="fragment" -->
- - Automatically triggered in a pre-commit hook <!-- .element: class="fragment" -->
- - Not ran on CI server (yet) <!-- .element: class="fragment" -->
+ - Automatically triggered per PR <!-- .element: class="fragment" -->
+ - Not ran on CI server <!-- .element: class="fragment" -->
  - Coverage value is not shared with management <!-- .element: class="fragment" -->
+ - Always take results with a grain of salt <!-- .element: class="fragment" -->
 
 +++
 
  - Java Framework : Pitest [pitest.org](http://www.pitest.org)
- - IntelliJ / Android Studio plugin [github.com/zalando/zester](http://www.github.com/zalando/zester)
- - Android gradle plugin [github.com/koral--/gradle-pitest-plugin](http://www.github.com/koral--/gradle-pitest-plugin)
+ - IntelliJ / Android Studio plugin : [github.com/zalando/zester](http://www.github.com/zalando/zester)
+ - Android gradle plugin : [github.com/koral--/gradle-pitest-plugin](http://www.github.com/koral--/gradle-pitest-plugin)
 
 ---
 
