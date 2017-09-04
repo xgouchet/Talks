@@ -36,10 +36,10 @@ _Droidcon Berlin 2017_
 ---
 
 
-### Code has bugs <!-- .element: class="fragment" -->
-### Tests are Code <!-- .element: class="fragment" -->
-#### ∴ <!-- .element: class="fragment" -->
-## Tests have bugs <!-- .element: class="fragment" -->
+### Code has bugs
+### Tests are Code
+#### ∴ 
+## Tests have bugs 
 
 +++
 
@@ -122,11 +122,9 @@ _Droidcon Berlin 2017_
 #### Bad tests can give 
 ### a false sense of security
 
-> “We need to be as confident in the tests we code 
+> “We need to be as confident in the tests we code as we are in the code we test.”
 > 
-> as we are in the code we test.”
-> 
-> — Me
+> — Me <!-- .element: class="fragment" -->
 
 ---
 
