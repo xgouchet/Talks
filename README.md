@@ -1,6 +1,6 @@
 # Talks
 
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/xgouchet/Talks/CodeReviews?grs=github&t=white) 
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/xgouchet/Talks/DroidconDE-ZenCodeReviews?grs=github&t=white) 
 
 ![CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc/4.0/80x15.png) 
 
