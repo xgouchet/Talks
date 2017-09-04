@@ -12,7 +12,6 @@ _Droidcon Berlin 2017_
 
 <h4 class="fragment">Android Architect at <img src="logos/deezer.png" class="logo-inline"/></h4>
 #### ‘Mr Tools’ / CI Admin / UT Advocate<!-- .element: class="fragment" -->
-#### Fluent in Android since Cupcake <!-- .element: class="fragment" -->
 
 ###### <span class="fragment"><a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …</span>
 
@@ -94,9 +93,9 @@ _Droidcon Berlin 2017_
 
 ---
 
-## When ?
+## What ?
 
-#### The right time to do code reviews
+#### The different types of code reviews
 
 +++
 
@@ -112,29 +111,23 @@ _Droidcon Berlin 2017_
 
 ### Pre-commit
 
-#### Pro <!-- .element: class="fragment" -->
-
- - Quality ensured before merge <!-- .element: class="fragment" -->
- - All code must be reviewed <!-- .element: class="fragment" -->
-
-#### Cons <!-- .element: class="fragment" -->
-
- - Productivity impact <!-- .element: class="fragment" -->
- - Back & forth Hell ™ <!-- .element: class="fragment" -->
+ - Pro <!-- .element: class="fragment" -->
+     - Quality ensured before merge <!-- .element: class="fragment" -->
+     - All code must be reviewed <!-- .element: class="fragment" -->
+ - Cons <!-- .element: class="fragment" -->
+     - Productivity impact <!-- .element: class="fragment" -->
+     - Back & forth Hell ™ <!-- .element: class="fragment" -->
 
 +++
 
 ### Post-commit
 
-#### Pro <!-- .element: class="fragment" -->
-
- - Continuous development <!-- .element: class="fragment" -->
- - Limit git conflicts <!-- .element: class="fragment" -->
-
-#### Cons <!-- .element: class="fragment" -->
-
- - Bug can ship to production <!-- .element: class="fragment" -->
- - Resolution can become non trivial afterwards <!-- .element: class="fragment" -->
+ - Pro <!-- .element: class="fragment" -->
+     - Continuous development <!-- .element: class="fragment" -->
+     - Limit git conflicts <!-- .element: class="fragment" -->
+ - Cons <!-- .element: class="fragment" -->
+     - Bug can ship to production <!-- .element: class="fragment" -->
+     - Resolution can become non trivial afterwards <!-- .element: class="fragment" -->
 
 +++
 
@@ -145,20 +138,6 @@ _Droidcon Berlin 2017_
  - by files modified <!-- .element: class="fragment" -->
  - random checks <!-- .element: class="fragment" -->
  - … ? <!-- .element: class="fragment" -->
-
----
-
-## Who ?
-
-#### Let the right people do the review
-
-+++
-
-### Remote code review
-
- - Anyone with access to GitHub / … <!-- .element: class="fragment" -->
- - Team lead <!-- .element: class="fragment" -->
- - Modified files watchers <!-- .element: class="fragment" -->
 
 +++
 
