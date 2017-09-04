@@ -285,9 +285,13 @@ _Droidcon Berlin 2017_
  - Share your knowledge <!-- .element: class="fragment" -->
  - Give as much as you receive <!-- .element: class="fragment" -->
 
+
 ---
 
 ## Thanks for your attention
 
 ### Any Question ? 
+
+#### See also [codereview.stackexchange.com](https://codereview.stackexchange.com)
+
 
