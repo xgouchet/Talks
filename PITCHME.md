@@ -1,61 +1,147 @@
 
-# Talks
+## Jenkins Workshop
 
-#### With witty subtitles
-
-_Given at a conference… Maybe…_ 
 
 ---
 
-![Deezer](logos/deezer.png) <!-- .element: class="logo white" -->
-
-## About…  Xavier F. Gouchet 
-
-#### Android Architect <!-- .element: class="fragment" -->
-#### ‘Mr Tools’ / CI / UT <!-- .element: class="fragment" -->
-#### Fluent in Android since Cupcake <!-- .element: class="fragment" -->
-
-###### <span class="fragment"><a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …</span>
-
----
-
-
-> ♫ A lyric quote ♪
-> 
-> — An unknown singer
+## Jenkins ???
 
 +++
 
-> “This is a witty quote, below the musical one.
-> 
-> And it has multiple paragraphs too !”
-> 
-> — Anonym
+### What's Jenkins
+
+ - Put simply, just a `cron` on steroids with a UI
+    - Run task periodically (nightly, checks every *n* minutes)
+    - Monitor SCM changes (do something for new branches, commits, PRs)
+    - Run task on demand
+
++++
+
+### What can a task do
+
+ - Put simply ? Anything !
+     - Build the app
+     - Run tests / static analysis
+     - Call APIs (Jira, GitHub, …)
+     - Trigger other tasks
+     - …
 
 ---
 
-```java
-followedBy(someCode);
+## Jenkins at Deezer
+
++++
+
+## Hephaistos vs Artemis ?
+
+ - Hephaistos : Dev oriented
+ - Artemis : non dev (Q&A, PO, PM, …), betas, releases 
+     - Warning ! No debug version are allowed to be build on Artemis
+
++++
+
+## Managing Jenkins
+
+ - Make sure the servers are up and running
+     - A little bit of sysadmin required
+ - Troubleshooting whenever a task goes red
+ - Manage users permissions and forgotten passwords
+
+
+---
+
+## Jenkins servers sysadmin
+
++++
+
+# Hands on ! 
+
+## Let's get you some accounts
+
+## Make sure that you have a decent terminal
+
+#### (You might want to install Linux for this)
+
++++
+
+```bash
+sudo useradd michel
+sudo passwd michel
+sudo adduser michel sudo
+```
+
++++
+
+# Hands on !
+
+## Where is Jenkins installed ? 
+## The various symlinks and folders in play
+
+```bash
+sudo su jenkins
+```
+
++++
+
+# Hands on ! 
+
+## Upgrading the OS
+
+```bash
+# Update the package list
+sudo apt update
+# List upgradable packages
+sudo apt list --upgradable
+# Upgrade the packages
+sudo apt upgrade [packages]
+```
+
++++
+
+# Hands on ! 
+
+## Troubleshooting the size issue
+
+```bash
+# disk space usage per partition
+df -h
+# disk space usage current folder
+du -a --max-depth=1 . | sort -nr
 ```
 
 ---
 
-## Section
+# Jenkins Admin
 
 +++
 
-### With some lists
+# Hands on ! 
 
- - Appearing<!-- .element: class="fragment" -->
- - One<!-- .element: class="fragment" -->
- - by<!-- .element: class="fragment" -->
- - one…<!-- .element: class="fragment" -->
+## Upgrading the plugins
+
++++
+
+# Hands on ! 
+
+## Users (new accounts, passwords)
+
++++
+
+# Hands on ! 
+
+## User permissions
 
 ---
 
-![Fire](https://i.makeagif.com/media/9-13-2015/ha2UMs.gif)
+# Jenkins Jobs
 
-##### Fire !
++++
+
+## Pipeline
+
+ - Groovy based script language
+ - Nodes
+ - Steps
 
 ---
 
