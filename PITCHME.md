@@ -98,6 +98,14 @@ sudo apt upgrade [packages]
 
 +++
 
+### Clean the APT cache
+
+```
+$sudo apt-get clean
+```
+
++++
+
 # Hands on ! 
 
 ## Troubleshooting the size issue
