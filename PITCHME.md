@@ -10,44 +10,32 @@ _Droidcon London 2017_
 
 ## About… Xavier F. Gouchet
 
-####    Android Architect at Deezer <img src="logos/deezer_equalizer.png" class="logo-inline"/>
+#### Android Architect at Deezer <img src="logos/deezer_equalizer.png" class="logo-inline"/>
 
-####Fluent in Android since Cupcake
+#### Fluent in Android since Cupcake
 
 ###### <a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
 
 ---
 
-> ♫ Put your hands in the air ♪
-> 
-> — Placebo
-
-+++
-
-![Git](img/git_tree.png) <!-- .element: class="photo white large" -->
+![Git](img/git_tree_2.png) <!-- .element: class="photo white large" -->
 
 ### <img src="img/git.png" class="logo-inline"/>
 
-+++
+---
 
 ![Git](img/git_merge.gif) <!-- .element: class="photo white large" -->
 
 ### <img src="img/git_merge.png" class="logo-inline"/>
 
 
-+++
+---
 
 ![Git](img/git_merge_conflicts.gif) <!-- .element: class="photo white large" -->
 
 ### <img src="img/conflict.png" class="logo-inline"/>
 
 ---
-
-> ♫ Let's start at the very begining ♪
-> 
-> — Julie Andrews
-
-+++
 
 ### Our first commit
 
@@ -62,7 +50,7 @@ Date:   Tue Jan 6 14:56:57 2009 +0000
                 966f65aa-2a5b-49e2-8ec6-7a0f9cdf547d
 ```
 
-+++
+---
 
 ### Since then…
 
@@ -76,17 +64,11 @@ Date:   Tue Jan 6 14:56:57 2009 +0000
 
 ---
 
-> ♫ Too many problems, 
-> 
-> Oh why am I here ♪
-> 
-> — Megadeth
+### What's the problem here ?
 
-+++
+## CVS is text based ! <!-- .element: class="fragment" -->
 
-## CVS is text based !
-
-+++
+---
 
 ### Text based versionning
 
@@ -95,7 +77,7 @@ Date:   Tue Jan 6 14:56:57 2009 +0000
  - Recognizes newlines / whitespace <!-- .element: class="fragment" -->
  - Doesn’t understand any syntax¹ <!-- .element: class="fragment" -->
 
-+++
+---
 
 ### Common conflicts
 
@@ -108,24 +90,16 @@ Date:   Tue Jan 6 14:56:57 2009 +0000
  <li class="fragment">… ?</li>
 </ul>
 
-+++
+---
 
 > “Most of those are fairly easy to solve, but usually tedious.”
 
 
 ---
 
-> ♫ There must be a better way
-> 
-> to make the things we want… ♪
-> 
-> — Paul Mc Cartney
-
-+++
-
 ## AutoMergeTool
 
-+++
+---
 
 ### Basic principle
 
@@ -137,7 +111,7 @@ Date:   Tue Jan 6 14:56:57 2009 +0000
  <li class="fragment">Manual solving as a “last resort” solution</li>
 </ul>
 
-+++
+---
 
 ### Example 1 : easy case
 
@@ -145,7 +119,7 @@ Date:   Tue Jan 6 14:56:57 2009 +0000
 $ git merge master
 ```
 
-+++
+---
 
 #### Example 1 : easy case
 
@@ -153,46 +127,42 @@ $ git merge master
 
 ```bash
 $ git mergetool
-… 
-[AMT] → Trying merge with tool1
+[AMT] → Trying merge with abc
 ```
 
-+++
+---
 
 #### Example 1 : easy case
 
 ![](img/file_2_conflicts.png) <!-- .element: class="ghost small" -->
 
 ```bash
-… 
-[AMT] ✗ tool1 didn’t solve all conflicts
-[AMT] → Trying merge with tool2
+[AMT] ✗ abc didn’t solve all conflicts
+[AMT] → Trying merge with jkl
 ```
 
-+++
+---
 
 #### Example 1 : easy case
 
 ![](img/file_1_conflict.png) <!-- .element: class="ghost small" -->
 
 ```bash
-… 
-[AMT] ✗ tool2 didn’t solve all conflicts
-[AMT] → Trying merge with tool3
+[AMT] ✗ jkl didn’t solve all conflicts
+[AMT] → Trying merge with xyz
 ```
 
-+++
+---
 
 #### Example 1 : easy case
 
 ![](img/file_0_conflicts.png) <!-- .element: class="ghost small" -->
 
 ```bash
-…
-[AMT] ✓ tool3 merged successfully
+[AMT] ✓ xyz merged successfully
 …
 ```
-+++
+---
 
 ### Example 2 : harder case
 
@@ -200,7 +170,7 @@ $ git mergetool
 $ git merge master
 ```
 
-+++
+---
 
 #### Example 2 : harder case
 
@@ -208,47 +178,43 @@ $ git merge master
 
 ```bash
 $ git mergetool
-… 
-[AMT] → Trying merge with tool1
+[AMT] → Trying merge with abc
 ```
 
-+++
+---
 
 #### Example 2 : harder case
 
 ![](img/file_3_conflicts.png) <!-- .element: class="ghost small" -->
 
 ```bash
-… 
-[AMT] ✗ tool1 didn’t solve all conflicts
-[AMT] → Trying merge with tool2
+[AMT] ✗ abc didn’t solve all conflicts
+[AMT] → Trying merge with jkl
 ```
 
-+++
+---
 
 #### Example 2 : harder case
 
 ![](img/file_2_conflicts.png) <!-- .element: class="ghost small" -->
 
 ```bash
-… 
-[AMT] ✗ tool2 didn’t solve all conflicts
-[AMT] → Trying merge with tool3
+[AMT] ✗ jkl didn’t solve all conflicts
+[AMT] → Trying merge with xyz
 ```
 
-+++
+---
 
 #### Example 2 : harder case
 
 ![](img/file_2_conflicts.png) <!-- .element: class="ghost small" -->
 
 ```bash
-…
-[AMT] ✗ tool2 didn’t solve all conflicts
+[AMT] ✗ xyz didn’t solve all conflicts
 [AMT] → Trying merge with manualToolX
 ```
 
-+++
+---
 
 #### Example 2 : harder case
 
@@ -260,7 +226,7 @@ $ git mergetool
 ## Configuration
 #### `~/.gitconfig` or `{project}/.git/config`
 
-+++
+---
 
 
 ```ini
@@ -273,7 +239,7 @@ conflictstyle = diff3
 cmd = amt.py -l $LOCAL -r $REMOTE -b $BASE -m $MERGED
 ```
 
-+++
+---
 
 ```ini
 [amt]
@@ -293,7 +259,7 @@ extensions = html;xml
 
 ## Automatic solvers
 
-+++
+---
 
 ### Language agnostic
 
@@ -303,19 +269,20 @@ extensions = html;xml
  - Conflict simplification <!-- .element: class="fragment" -->
  - … <!-- .element: class="fragment" -->
 
-+++
+---
 
 ### Language specifics
 
  - Java Imports <!-- .element: class="fragment" -->
  - Kotlin Imports (WIP) <!-- .element: class="fragment" -->
+ - XML/Json Structural edits (WIP) <!-- .element: class="fragment" -->
  - … <!-- .element: class="fragment" -->
 
 ---
 
 ## Early results
 
-+++
+---
 
 ### First try : 
 
@@ -327,38 +294,43 @@ extensions = html;xml
  - Time spent : 2 minutes <!-- .element: class="fragment" -->
      - plus time to write AutoMergeTool <!-- .element: class="fragment" -->
 
-+++
+---
 
 ### Daily use since december 2016
 
  - Number of manual conflicts down by 75% <!-- .element: class="fragment" -->
  - Mood increased by 200% <!-- .element: class="fragment" -->
 
-+++
+---
 
-### Going further
+### Where can I get it ?
 
-![](img/dog_fooding.png) <!-- .element: class="ghost medium" -->
-
-+++
-
-### Going further
-
-![](img/octocat_daft_punk.gif) <!-- .element: class="ghost medium" -->
-
-[github.com/xgouchet/AutoMergeTool](http://www.github.com/xgouchet/AutoMergeTool) : <img class="logo-inline" src="img/git_fork.png"/> <img class="logo-inline" src="img/git_pr.png"/>
-
-+++
-
-### Going further
-
-![](img/package.png) <!-- .element: class="ghost medium" -->
+ - Github : [github.com/xgouchet/AutoMergeTool](https://github.com/xgouchet/AutoMergeTool)
+ - Pip / Easyinstall
 
 ```bash
 $ pip install automergetool
 ```
 
-+++
+---
+
+### Going further
+
+![](img/dog_fooding.png) <!-- .element: class="ghost medium" -->
+
+---
+
+### Going further
+
+![](img/octocat_daft_punk.gif) <!-- .element: class="ghost medium" -->
+
+---
+
+### Going further
+
+![](img/package.png) <!-- .element: class="ghost medium" -->
+
+---
 
 ### ¹ Going *even* further
 
@@ -370,10 +342,19 @@ $ pip install automergetool
 
 ---
 
+### F.A.Q.
+
+<ul>
+<li class="fragment">Does it work with `.xyz` files ?
+<ul><li class="fragment">Even with binary formats ?</li></ul></li>
+<li class="fragment"> Can I write a custom solver?</li>
+<li class="fragment"> Can it break my code ?</li>
+</ul>
+---
+
 ## Thanks for your attention
 
 ### Any Question ? 
 
-#### See also [codereview.stackexchange.com](https://codereview.stackexchange.com)
-
+[https://github.com/xgouchet/AutoMergeTool](https://github.com/xgouchet/AutoMergeTool)
 
