@@ -347,9 +347,11 @@ $ pip install automergetool
 <ul>
 <li class="fragment">Does it work with `.xyz` files ?
 <ul><li class="fragment">Even with binary formats ?</li></ul></li>
-<li class="fragment"> Can I write a custom solver?</li>
-<li class="fragment"> Can it break my code ?</li>
+<li class="fragment">Can I write a custom solver?</li>
+<li class="fragment">Can it break my code ?</li>
+<li class="fragment">How to write a solver ? <a href="https://github.com/xgouchet/AutoMergeTool/blob/master/template/gen_solver.py">Template</a></li>
 </ul>
+
 ---
 
 ## Thanks for your attention
