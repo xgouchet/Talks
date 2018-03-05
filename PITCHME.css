@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+
 .reveal h1, .reveal h2 {
     color : #2980b9;
 }
@@ -8,6 +10,7 @@
 }
 
 .reveal blockquote {
+    font-family: 'Noto Serif', serif;
     background : #ecf0f1;
     color : #000;
 }
