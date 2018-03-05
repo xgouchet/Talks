@@ -7,15 +7,14 @@ _Given at a conference… Maybe…_
 
 ---
 
-![Deezer](logos/deezer.png) <!-- .element: class="logo white" -->
+## About… Xavier F. Gouchet
 
-## About…  Xavier F. Gouchet 
+#### Lead Android Engineer at WorkWell <img src="logos/workwell.png" class="logo-inline"/>
 
-#### Android Architect <!-- .element: class="fragment" -->
-#### ‘Mr Tools’ / CI / UT <!-- .element: class="fragment" -->
-#### Fluent in Android since Cupcake <!-- .element: class="fragment" -->
+#### Fluent in Android since Cupcake
 
-###### <span class="fragment"><a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …</span>
+
+###### <a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
 
 ---
 
@@ -53,7 +52,7 @@ followedBy(someCode);
 
 ---
 
-![Fire](https://i.makeagif.com/media/9-13-2015/ha2UMs.gif)
+<img src="https://i.makeagif.com/media/9-13-2015/ha2UMs.gif" class="photo small" /> 
 
 ##### Fire !
 
