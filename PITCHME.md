@@ -1,9 +1,10 @@
+# Rock the Gradle
 
-# Talks
+## Rule the world
 
-#### With witty subtitles
+## <img src="logos/gradle.png" class="logo-inline"/>
 
-_Given at a conference… Maybe…_ 
+_Android Makers, 2018_ 
 
 ---
 
@@ -16,45 +17,54 @@ _Given at a conference… Maybe…_
 
 ###### <a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
 
++++
+
+### What we do at WorkWell <img src="logos/workwell.png" class="logo-inline"/>
+
+`TODO  w/ marketing`
+
 ---
 
-
-> ♫ A lyric quote ♪
-> 
-> — An unknown singer
+## 1. Dependencies management
 
 +++
 
-> “This is a witty quote, below the musical one.
-> 
-> And it has multiple paragraphs too !”
-> 
-> — Anonym
+### Use the Extra properties
 
----
+```groovy
+ext {
+  versions = [
+    foo = '0.42'
+    bar = '3.14'
+  ]
+  libs = [
+    foo = "com.example.inc:foo:${versions.foo}"
+    bar = "io.startup:bar:${versions.bar}"
+  ]
+}
 
-```java
-followedBy(someCode);
 ```
 
----
++++
 
-## Section
+### Use the buildSrc folder
 
 +++
 
-### With some lists
+### Create dependency groups
 
- - Appearing<!-- .element: class="fragment" -->
- - One<!-- .element: class="fragment" -->
- - by<!-- .element: class="fragment" -->
- - one…<!-- .element: class="fragment" -->
 
 ---
 
-<img src="https://i.makeagif.com/media/9-13-2015/ha2UMs.gif" class="photo small" /> 
+# 2. Separation of concern
 
-##### Fire !
+---
+
+# 3. Custom task
+
+---
+
+# 4. Local Plugin
 
 ---
 
