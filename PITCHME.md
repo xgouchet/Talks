@@ -25,46 +25,43 @@ _Android Makers, 2018_
 
 ---
 
-## 1. Dependencies management
+## Meet the `buildSrc` folder
 
 +++
 
-### Use the Extra properties
-
-```groovy
-ext {
-  versions = [
-    foo = '0.42'
-    bar = '3.14'
-  ]
-  libs = [
-    foo = "com.example.inc:foo:${versions.foo}"
-    bar = "io.startup:bar:${versions.bar}"
-  ]
-}
-
+```
+┬📂 MyProject
+├┬📂 app/
+│├──📁 src/
+│└──📄 build.gradle
+├┬📂 buildSrc/
+│├──📁 src/
+│└──📄 build.gradle
+├─📄 build.gradle
+└─📄 settings.gradle
 ```
 
 +++
 
-### Use the buildSrc folder
+- Works like _any_ module in your project
+- Compiled **and tested** for any gradle task
+- Groovy, Java, Kotlin
 
 +++
 
-### Create dependency groups
+### Default `build.gradle`
+
+```
+apply plugin: 'groovy'
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+```
+
++++
 
 
----
-
-# 2. Separation of concern
-
----
-
-# 3. Custom task
-
----
-
-# 4. Local Plugin
 
 ---
 
