@@ -17,7 +17,7 @@ _CodeMobile UK 2018_
 
 ###### <a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
 
----
++++
 
 ## What we do at WorkWell <img src="logos/workwell.png" class="logo-inline"/>
 
@@ -27,11 +27,11 @@ _CodeMobile UK 2018_
 
 > Previously, in CodeMobileUk 2017 …
 
----
++++
 
 <img src="img/previously_1.png" class="large"/>
 
----
++++
 
 <img src="img/previously_2.png" class="large"/>
 
@@ -51,7 +51,7 @@ _CodeMobile UK 2018_
 
 #### Mocks ? Stubs ? Fakes ? Dummies ? 
 
----
++++
 
 #### Fakes (aka Dummies)
 
@@ -66,7 +66,7 @@ _CodeMobile UK 2018_
   }
 ```
 
----
++++
 
 #### Stubs / Mocks
 
@@ -80,7 +80,7 @@ _CodeMobile UK 2018_
   }
 ```
 
----
++++
 
 #### Spies
 
@@ -101,7 +101,7 @@ _CodeMobile UK 2018_
 
 #### What's the problem with fakes
 
----
++++
 
 #### All my tests involved users named Alice and Bob. 
 
@@ -110,11 +110,10 @@ _CodeMobile UK 2018_
 #### Working at FooBar Inc. <!-- .element: class="fragment" -->
 
 
----
++++
 
-> When all your fake data are `“foo”` and `42`,  how can you be sure that your tests are valid ?
-
----
+#### When all your fake data are `“foo”` and `42`,
+####  how can you be sure that your tests are valid ?
 
 <ul>
  <li class="fragment">Where does the `42` come from ?</li>
@@ -122,13 +121,13 @@ _CodeMobile UK 2018_
  <li class="fragment">Only one value is tested. Ever.</li>
 </ul>
 
----
++++
 
 ### Solution ? 
 
 #### Use random data…
 
----
++++
 
 ```kotlin
   @Test fun invalidateDataAfterTimeout() {
@@ -142,30 +141,31 @@ _CodeMobile UK 2018_
   }
 ```
 
----
++++
 
 ```kotlin
   @Test fun invalidateDataAfterTimeout() {
-    val fakeTS = abs(rand.nextLong())
-    val fakeTTL = abs(rand.nextLong())
+    val fakeTS = rand.nextLong()
+    val fakeTTL = rand.nextLong()
+    val fakeDelay = rand.nextLong()
+
     testedObject.setLastCallTimestamp(fakeTS)
     testedObject.setDataTTL(fakeTTL)
-    val delay = rand.nextLong()
 
-    val ts = fakeTS + fakeTTL + delay
+    val ts = fakeTS + fakeTTL + fakeDelay
     val result = testedObject.isDataValid(ts)
 
     assertFalse(result)
   }
 ```
 
----
++++
 
 ### … but not _too_ random
 
 #### (Long overflow, negative TTL, …)
 
----
++++
 
 #### Introducing [Elmyr <i class="fa fa-github" aria-hidden="true"></i>](https://github.com/xgouchet/Elmyr/) 
 
@@ -177,24 +177,25 @@ class FooTest {
 }
 ```
 
----
++++
 
 ```kotlin
   @Test fun invalidateDataAfterTimeout(){
     val fakeTS = forger.aTimestamp()
     val fakeTTL = forger.aLong(1, 86400000)
+    val fakeDelay = forger.aLong(1, 86400000)
+
     testedObject.setLastCallTimestamp(fakeTS)
     testedObject.setDataTTL(fakeTTL)
 
-    val delay = forger.aLong(1, 86400000)
-    val ts = fakeTimestamp + fakeTTL + delay
+    val ts = fakeTS + fakeTTL + fakeDelay
     val result = testedObject.isDataValid(ts)
 
     assertFalse(result)
 }
 ```
 
----
++++
 
 #### Elmyr features
 
@@ -217,23 +218,52 @@ val userPhone = forger.aStringMatching("(0|+44)\\d{10}")
 
 #### What's the problem with mocks
 
----
++++
 
 ### Foreword
 
 > “There are two types of mocks:
 > inputs and outputs”
 
----
++++
+
+#### Input
+
+```kotlin
+  @Test fun testSomething() {
+    val fakeData = forger.anInt()
+    val inputMock = mock()
+    whenever (inputMock.getData()) doReturn fakeData
+
+    // Call to getData is not verified directly
+  }
+```
+
++++
+
+#### Output
+
+```kotlin
+  @Test fun testSomething() {
+    val outputMock = mock()
+    // mock is not stubbed
+
+    verify(outputMock).onSomethingDone()
+  }
+```
+
++++
 
 ### The problem:
 
 #### Mocks are designed to make the test pass
 
----
++++
 
-#### Are your mocks consistent…
-### … between two test methods ? 
+### Are your mocks consistent…
+#### … between two test methods ? <!-- .element: class="fragment" -->
+
++++
 
 ```kotlin
   @Test fun testFoo() {
@@ -248,7 +278,8 @@ val userPhone = forger.aStringMatching("(0|+44)\\d{10}")
     // …
   }
 ```
----
+
++++
 
 ### Solution ? 
 
@@ -257,9 +288,12 @@ val userPhone = forger.aStringMatching("(0|+44)\\d{10}")
  - Mocks have single configuration <!-- .element: class="fragment" -->
  - All stubbing is done in one place <!-- .element: class="fragment" -->
 
----
++++
 
-### … between two test classes ? 
+### Are your mocks consistent…
+#### … between two test classes ? <!-- .element: class="fragment" -->
+
++++
 
 ```kotlin
 class Foo {
@@ -268,6 +302,7 @@ class Foo {
     whenever(myMock.getFirst() doThrow(new Exception())
   }
 }
+
 class Fiz {
   @Before fun setupMock() {
     whenever(myMock.isEmpty()) doReturn(true)
@@ -277,15 +312,15 @@ class Fiz {
 }
 ```
 
----
++++
 
 ### Solution ? 
 
 #### Use a separate class to setup the mocks
 
-##### _Introducing Contract based mocking_
+##### _Introducing Contract based mocking_ <!-- .element: class="fragment" -->
 
----
++++
 
 #### Defining the contract
 
@@ -301,7 +336,7 @@ class BarContract {
 }
 ```
 
----
++++
 
 #### Using the contract
 
@@ -322,25 +357,28 @@ class FooTest {
 
 ```
 
----
++++
 
-### … with the concrete implementations ?
+### Are your mocks consistent…
+#### … with the concrete implementations ? <!-- .element: class="fragment" -->
 
  - Fuzzy specs <!-- .element: class="fragment" -->
  - 3rd party implementation <!-- .element: class="fragment" -->
  - Undocumented behavior <!-- .element: class="fragment" -->
 
----
++++
 
 ### Solution ?
 
 #### Use the contract as test definition
 
----
++++
 
 #### Introducing [Mesmaeker <i class="fa fa-github" aria-hidden="true"></i>](https://github.com/xgouchet/Mesmaeker/)
 
----
+(Still in αlphα)
+
++++
 
 #### Defining the contract
 
@@ -357,7 +395,7 @@ open class BarContract
 }
 ```
 
----
++++
 
 #### Using the contract
 
@@ -375,17 +413,19 @@ class FooTest {
 
 ```
 
----
++++
 
 #### Testing the contract
 
 ```kotlin
 class BarTest (clause : String)
   : ContractValidator<Bar, BarContract> (clause) {
+
   override fun instantiateContract()
     : BarContract = BarContract()
   override fun instantiateSubject()
     : Bar = Bar()
+
   companion object {
     @JvmStatic @Parameterized.Parameters()
     fun data(): Collection<Array<Any?>> {
@@ -395,7 +435,7 @@ class BarTest (clause : String)
 }
 ```
 
----
++++
 
 #### Writing the Clauses of the Contract
 
@@ -410,7 +450,7 @@ class BarTest (clause : String)
   }
 ```
 
----
++++
 
 #### Detail's in the fine print
 
@@ -431,7 +471,7 @@ override fun getClauseParams(clause: String): Array<Any?>? {
  - Try to think of what could go wrong <!-- .element: class="fragment" -->
  - Look for the edge cases <!-- .element: class="fragment" -->
 
----
++++
 
 > “You need to be as confident in the code you test as you are in the test you code ”
 
