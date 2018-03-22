@@ -53,11 +53,11 @@ $ git lg
 
 ---
 
-## You're here → ·
+## You're here ↓
 
 ```ini
 [alias]
-  # WTF was I working on yesterday ?
+  # WTF was I working on earlier… ?
   wtf = "!git status --short --branch; 
           echo -e '\nThe last commit was :'; 
           git l -1 --numstat"
@@ -93,6 +93,8 @@ $ git lg
 [alias]
   # Update local branch
   update = "!git pull -r && git dmb && git wtf"
+  # Synchronize with the remote repository
+  sync = "!git pull -r && git push"
 ```
 
 ---
@@ -125,9 +127,11 @@ $ git lg
 
 ```ini
 [alias]
-  unadd = rm --cached
+  # Remove the changes from the index
   unstage = reset --mixed
+  # Remove the last commit, keep the changes
   uncommit = reset --soft HEAD^
+  # Delete the last commit with its changes ⚠
   rollback = reset --hard HEAD^
 ```
 
@@ -160,6 +164,14 @@ $ git lg
   steal = commit --amend --reset-author --no-edit
   yolo = commit -m "$(curl -s whatthecommit.com/index.txt)"
 ```
+
+---
+
+## Want more ‽
+
+ - Search for `.gitconfig` on <i class="fa fa-github" aria-hidden="true"></i> gists
+ - Search for `git aliases` on <i class="fa fa-stack-overflow" aria-hidden="true"></i> or just <i class="fa fa-google" aria-hidden="true"></i>
+ - If you type it more than twice, make an alias of it
 
 ---
 
