@@ -1,9 +1,7 @@
 
-# Talks
+# Git Magic Tricks
 
-#### With witty subtitles
-
-_Given at a conference… Maybe…_ 
+_CodeMobile UK 2018_ 
 
 ---
 
@@ -18,43 +16,150 @@ _Given at a conference… Maybe…_
 
 ---
 
+## Foreword
 
-> ♫ A lyric quote ♪
-> 
-> — An unknown singer
+### Edit the config files : 
+
+ - Local `/…/repo/.git/config`
+ - Global (per user) : `~/.gitconfig`
+ - System : `/etc/gitconfig`
+
+```ini
+[group]
+  property = value
+```
 
 +++
 
-> “This is a witty quote, below the musical one.
-> 
-> And it has multiple paragraphs too !”
-> 
-> — Anonym
+### In the terminal
 
----
+```shell
+$ git config group.property "Foo"
+$ git config --global group.property "Bar"
+$ git config --system group.property "Baz"
+```
++++
 
-```java
-followedBy(someCode);
+## Aliases
+
+```ini
+[alias]
+  lg = log --pretty=format:"%C(yellow)%h %ad %Creset%s"
+```
+
+```shell
+$ git lg
 ```
 
 ---
 
-## Section
+## You're here → ·
+
+```ini
+[alias]
+  # WTF was I working on yesterday ?
+  wtf = "!git status --short --branch; 
+          echo -e '\nThe last commit was :'; 
+          git l -1 --numstat"
+```
 
 +++
 
-### With some lists
-
- - Appearing<!-- .element: class="fragment" -->
- - One<!-- .element: class="fragment" -->
- - by<!-- .element: class="fragment" -->
- - one…<!-- .element: class="fragment" -->
+```ini
+[alias]
+  # log only my commits
+  mine = log --author="$(git config user.email)"
+  # log my commits since yesterday
+  standup = !git mine --pretty=format:… --since yesterday
+  # List most active authors 
+  score = shortlog --numbered --summary --no-merges
+```
 
 ---
 
-<img src="https://i.makeagif.com/media/9-13-2015/ha2UMs.gif" class="photo small" /> 
+## Working with branches
 
-##### Fire !
+```ini
+[alias]
+  # dmb = delete-merged-branches
+  dmb = "!git branch --no-color --merged | 
+          egrep -v "(^\*|master|develop)" | 
+          xargs -I{} git branch -d {}"
+```
+
++++
+
+```ini
+[alias]
+  # Update local branch
+  update = "!git pull -r && git dmb && git wtf"
+```
+
+---
+
+## Rewriting history
+
+```ini
+[alias]
+  # Amend last commit
+  amend = commit --amend
+  # Amend without prompting for a message update
+  comend = commit --amend --no-edit
+  # Create a fixup commit (git fixup 35d15a2)
+  fixup = "!f() { git commit --fixup=$1 }; f"
+```
+
++++
+
+## Rewriting history
+
+```ini
+[alias]
+  # never push force !
+  please = push --force-with-lease
+```
+
++++
+
+## To err is human, but a real disaster needs a git client
+
+```ini
+[alias]
+  unadd = rm --cached
+  unstage = reset --mixed
+  uncommit = reset --soft HEAD^
+  rollback = reset --hard HEAD^
+```
+
++++
+
+![git areas](img/git_areas.png)
+
+---
+
+## I have sexdaily...
+### _dislexia... damn_
+
+```ini
+[help]
+  # execute the mistyped command after 50 deciseconds (5s)
+  autoCorrect = 50
+
+
+[alias]
+  cehcout = checkout
+  cmomit = commit
+```
+
+---
+
+## An accident waiting to happen
+
+```ini
+[alias]
+  steal = commit --amend --reset-author --no-edit
+  yolo = commit -m "$(curl -s whatthecommit.com/index.txt)"
+```
 
 ---
 
