@@ -18,6 +18,14 @@ _Wild Code School_
 ## What we do at Workwell
 # <img src="logos/workwell.png" class="logo-inline"/>
 
++++
+
+## And before that ? 
+### <img src="logos/deezer.png" class="logo-inline"/>
+
+ - Team of 18 developers (on Android only)
+ - Multiple focus teams
+ - Remote work
 
 ---
 
