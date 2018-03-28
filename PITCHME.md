@@ -9,10 +9,15 @@ _Wild Code School_
 
 ## About… Xavier F. Gouchet 
 
-<h4>Android Architect at <img src="logos/deezer.png" class="logo-inline"/></h4>
-#### ‘Mr Tools’ / CI Admin / UT Advocate
+<h4>Lead Android Software Engineer at Workwell</h4>
 
 ###### <span><a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …</span>
+
++++
+
+## What we do at Workwell
+# <img src="logos/workwell.png" class="logo-inline"/>
+
 
 ---
 
