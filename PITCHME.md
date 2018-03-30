@@ -2,26 +2,22 @@
 
 ## Rule the world
 
-## <img src="logos/gradle.png" class="logo-inline"/> + <img src="logos/kotlin.png" class="logo-inline"/>
-
 _Android Makers, 2018_ 
+
+## ![](assets/workwell.png) <!-- .element : class="logo" -->
 
 ---
 
 ## About… Xavier F. Gouchet
 
-#### Lead Android Engineer at WorkWell <img src="logos/workwell.png" class="logo-inline"/>
+#### Lead Android Engineer at WorkWell
 
 #### Fluent in Android since Cupcake
 
 
 ###### <a>@xgouchet</a> on <i class="fa fa-github"></i>, <i class="fa fa-stack-overflow"></i>, <i class="fa fa-linkedin"></i>, <i class="fa fa-twitter" aria-hidden="false"></i>, …
 
-+++
-
-### What we do at WorkWell <img src="logos/workwell.png" class="logo-inline"/>
-
-`TODO  w/ marketing`
++++?image=assets/Slides_WW_EN.png&size=cover
 
 ---
 
@@ -62,8 +58,6 @@ dependencies {
 ---
 
 ## Let's see some code
-
-### <img src="logos/gradle.png" class="logo-inline"/> + <img src="logos/kotlin.png" class="logo-inline"/>
 
 ---
 
