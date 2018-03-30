@@ -18,22 +18,18 @@ _CodeMobile UK 2018_
 ###### <a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
 
 +++
-
-## What we do at WorkWell <img src="logos/workwell.png" class="logo-inline"/>
-
-`TODO  w/ marketing`
+<!-- .slide: data-background-image="./img/Slides_WW_EN.png" data-background-size="cover" data-background-color=" " -->
 
 ---
 
 > Previously, in CodeMobileUk 2017 …
 
 +++
-
-<img src="img/previously_1.png" class="large"/>
+<!-- .slide: data-background-image="./img/previously_1.png" data-background-size="contain" data-background-color=" " -->
 
 +++
+<!-- .slide: data-background-image="./img/previously_2.png" data-background-size="contain" data-background-color=" " -->
 
-<img src="img/previously_2.png" class="large"/>
 
 ---
 
