@@ -10,7 +10,7 @@ _CodeMobile UK 2018_
 
 ## About… Xavier F. Gouchet
 
-#### Lead Android Engineer at WorkWell ![](assets/workwell.png) <!-- .element class="logo-inline" -->
+#### Lead Android Engineer at WorkWell 
 
 #### Fluent in Android since Cupcake
 
