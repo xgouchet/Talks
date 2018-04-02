@@ -7,8 +7,7 @@ _CodeMobile UK 2018_
 
 ## About… Xavier F. Gouchet
 
-#### Lead Android Engineer at WorkWell <img src="logos/workwell.png" class="logo-inline"/>
-
+#### Lead Android Engineer at WorkWell 
 #### Fluent in Android since Cupcake
 
 
@@ -44,7 +43,7 @@ $ git config --system group.property "Baz"
 
 ```ini
 [alias]
-  lg = log --pretty=format:"%C(yellow)%h %ad %Creset%s"
+  lg = log --pretty=format:"%Cyellow%h %ad %Cwhite%s"
 ```
 
 ```shell
@@ -59,8 +58,8 @@ $ git lg
 [alias]
   # WTF was I working on earlier… ?
   wtf = "!git status --short --branch; 
-          echo -e '\nThe last commit was :'; 
-          git l -1 --numstat"
+          echo -e '\nThe last 3 commits was :'; 
+          git lg -3 --numstat"
 ```
 
 +++
@@ -68,11 +67,10 @@ $ git lg
 ```ini
 [alias]
   # log only my commits
-  mine = log --author="$(git config user.email)"
+  mine = lg --author="$(git config user.email)"
+
   # log my commits since yesterday
-  standup = !git mine --pretty=format:… --since yesterday
-  # List most active authors 
-  score = shortlog --numbered --summary --no-merges
+  standup = !git mine --since yesterday
 ```
 
 ---
@@ -134,11 +132,6 @@ $ git lg
   # Delete the last commit with its changes ⚠
   rollback = reset --hard HEAD^
 ```
-
-+++
-
-![git areas](img/git_areas.png)
-
 ---
 
 ## I have sexdaily...
@@ -161,9 +154,11 @@ $ git lg
 
 ```ini
 [alias]
-  steal = commit --amend --reset-author --no-edit
-  yolo = commit -m "$(curl -s whatthecommit.com/index.txt)"
+  yolo = "!git add -a && 
+        commit -m "$(curl -s whatthecommit.com/index.txt)"
 ```
+
+> Think this is a normal commit ? Just wait until you see what's inside ! 
 
 ---
 
