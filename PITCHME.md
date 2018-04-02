@@ -28,7 +28,7 @@ _CodeMobile UK 2018_
   property = value
 ```
 
-+++
+---
 
 ### In the terminal
 
@@ -37,7 +37,8 @@ $ git config group.property "Foo"
 $ git config --global group.property "Bar"
 $ git config --system group.property "Baz"
 ```
-+++
+
+---
 
 ## Aliases
 
@@ -52,7 +53,7 @@ $ git lg
 
 ---
 
-## You're here ↓
+### You're here ↓
 
 ```ini
 [alias]
@@ -62,7 +63,9 @@ $ git lg
           git lg -3 --numstat"
 ```
 
-+++
+---
+
+### Short term memory loss
 
 ```ini
 [alias]
@@ -75,7 +78,7 @@ $ git lg
 
 ---
 
-## Working with branches
+### Take out the trash
 
 ```ini
 [alias]
@@ -85,7 +88,10 @@ $ git lg
           xargs -I{} git branch -d {}"
 ```
 
-+++
+---
+
+### What's up, doc ?
+
 
 ```ini
 [alias]
@@ -96,7 +102,7 @@ $ git lg
 
 ---
 
-## Rewriting history
+### Rewriting history
 
 ```ini
 [alias]
@@ -110,9 +116,9 @@ $ git lg
   fixup = commit --fixup
 ```
 
-+++
+---
 
-## Can i have some more, please ?
+### Can i have some more, please ?
 
 ```ini
 [alias]
@@ -120,9 +126,9 @@ $ git lg
   please = push --force-with-lease
 ```
 
-+++
+---
 
-## To err is human, but a real disaster needs a git client
+### To err is human, but a real disaster needs a git client
 
 ```ini
 [alias]
@@ -137,15 +143,19 @@ $ git lg
 ```
 ---
 
-## I have sexdaily...
-### _dislexia... damn_
+### I have sexdaily...
+##### _dislexia..._
 
 ```ini
 [help]
   # execute the mistyped command after 50 deciseconds (5s)
   autoCorrect = 50
 
+```
 
+### Damn autocorrect!
+
+```ini
 [alias]
   cehcout = checkout
   cmomit = commit
@@ -153,23 +163,29 @@ $ git lg
 
 ---
 
-## An accident waiting to happen
+### An accident waiting to happen
 
 ```ini
 [alias]
   yolo = "!git add -a && 
         commit -m "$(curl -s whatthecommit.com/index.txt)"
 ```
-
-> “Think this is a normal commit ? Just wait until you see what's inside !”
+ - “Some fixes.”
+ - “Should work now… I think”
+ - “You won't believe what this developer did to fix the bug !”
 
 ---
 
-## Want more ‽
+## Want more ?
 
- - Search for `.gitconfig` on <i class="fa fa-github" aria-hidden="true"></i> gists
- - Search for `git aliases` on <i class="fa fa-stack-overflow" aria-hidden="true"></i> or just <i class="fa fa-google" aria-hidden="true"></i>
- - If you type it more than twice, make an alias of it
+ - <i class="fa fa-search" aria-hidden="true"></i> `.gitconfig` on <i class="fa fa-github" aria-hidden="true"></i> gists
+ - <i class="fa fa-search" aria-hidden="true"></i> `git aliases` on <i class="fa fa-stack-overflow" aria-hidden="true"></i> or just <i class="fa fa-google" aria-hidden="true"></i>
+
+> If you type it more than twice, make an alias of it
+
+---
+
+# Demo time
 
 ---
 
@@ -177,10 +193,22 @@ $ git lg
 
 ---
 
+# Questions
+
+---
+
 # ~~Questions~~
+
+---
+
+# Git Hooks
+
+### &nbsp;
 
 ---
 
 # ~~Git Hooks~~
 
 ### Next time… maybe ?
+
+#### Thank you for your attention
