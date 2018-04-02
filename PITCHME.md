@@ -89,9 +89,8 @@ $ git lg
 
 ```ini
 [alias]
-  # Update local branch
   update = "!git pull -r && git dmb && git wtf"
-  # Synchronize with the remote repository
+
   sync = "!git pull -r && git push"
 ```
 
@@ -103,15 +102,17 @@ $ git lg
 [alias]
   # Amend last commit
   amend = commit --amend
+
   # Amend without prompting for a message update
   comend = commit --amend --no-edit
+
   # Create a fixup commit (git fixup 35d15a2)
-  fixup = "!f() { git commit --fixup=$1 }; f"
+  fixup = commit --fixup
 ```
 
 +++
 
-## Rewriting history
+## Can i have some more, please ?
 
 ```ini
 [alias]
@@ -125,11 +126,13 @@ $ git lg
 
 ```ini
 [alias]
-  # Remove the changes from the index
+  # undo `git [add|rm] …`
   unstage = reset --mixed
-  # Remove the last commit, keep the changes
+
+  # undo `git commit …`, keep the changes
   uncommit = reset --soft HEAD^
-  # Delete the last commit with its changes ⚠
+
+  # undo `git commit …`, drop the changes ⚠
   rollback = reset --hard HEAD^
 ```
 ---
@@ -158,7 +161,7 @@ $ git lg
         commit -m "$(curl -s whatthecommit.com/index.txt)"
 ```
 
-> Think this is a normal commit ? Just wait until you see what's inside ! 
+> “Think this is a normal commit ? Just wait until you see what's inside !”
 
 ---
 
@@ -170,7 +173,14 @@ $ git lg
 
 ---
 
-## Thanks for your attention
+# ~~Demo time~~
 
-#### Any Question ? 
+---
 
+# ~~Questions~~
+
+---
+
+# ~~Git Hooks~~
+
+### Next time… maybe ?
