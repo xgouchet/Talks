@@ -1,7 +1,7 @@
 
 # Did your mocks read the EULA
 
-#### Contracts for your tests
+#### Contracts for your mocks and Fakes
 
 _CodeMobile UK 2018_ 
 
@@ -23,19 +23,30 @@ _CodeMobile UK 2018_
 
 > Previously, in CodeMobileUk 2017 …
 
++++?image=assets/previously_2.png&size=contain
+
 +++?image=assets/previously_1.png&size=contain
 
-+++?image=assets/previously_2.png&size=contain
++++
+
+### Objective 
+
+##### Making sure the tools we use enhance our tests
+
+> You must be as confident in the test you code as you are in the code you test.
+
 
 ---
 
-### ♫ Put your hands in the air ♪
+### Put your hands in the air
 
  - Unit tests ? <!-- .element: class="fragment" -->
- - Mockito / KotlinMockito? <!-- .element: class="fragment" -->
- - Easymock ? <!-- .element: class="fragment" -->
- - JMockit ? <!-- .element: class="fragment" -->
- - Mockk ? <!-- .element: class="fragment" -->
+ - Mocks <!-- .element: class="fragment" -->
+    - Mockito / KotlinMockito? 
+    - Easymock ? <!-- .element: class="fragment" -->
+    - JMockit ? <!-- .element: class="fragment" -->
+    - Mockk ? <!-- .element: class="fragment" -->
+
 
 ---
 
@@ -47,7 +58,7 @@ _CodeMobile UK 2018_
 
 #### Fakes (aka Dummies)
 
-<small>Dumb POKO, actual value is not relevant</small>
+<small>Dumb POJO / Data Class, actual value is not relevant</small>
 
 
 ```kotlin
@@ -81,8 +92,10 @@ _CodeMobile UK 2018_
 ```kotlin
   @Test fun testCallsListener() {
     val spiedListener = spy(realListener)
+
     testedObject.addListener(spiedListener)
     testedObject.doSomething()
+
     verify(spiedListener).somethingDone()
   }
 ```
@@ -117,7 +130,7 @@ _CodeMobile UK 2018_
 
 ### Solution ? 
 
-#### Use random data…
+#### Use random data… <!-- .element: class="fragment" -->
 
 +++
 
@@ -171,6 +184,62 @@ class FooTest {
 
 +++
 
+#### Elmyr features : forging numbers
+
+```kotlin
+// works with ints longs, floats and doubles
+
+forger.anInt(min = 0, max =100)
+forger.aPositiveLong()
+forger.aGaussianFloat(mean = 42.0f, standardDeviation = 100.0f)
+forger.aDoubleArray(DoubleConstraint.NEGATIVE_STRICT)
+```
+
++++
+
+#### Elmyr features : forging strings
+
+```kotlin
+forger.anHexadecimalString()
+forger.aWord()
+forger.aSentence()
+
+forger.anEmail()
+forger.aUrl()
+
+forger.aStringArray(StringConstraint.WORD)
+forger.aStringMatching("(0|+44)\\d{10}")
+```
+
++++
+
+#### Elmyr features : forging from collections, enum
+
+```kotlin
+forger.anElementFrom(myCollection)
+forger.anElementFrom(value1, value2, value3, …)
+
+forger.aValueFrom(MyEnum::class)
+
+forger.aNullableFrom(nonNullValue)
+```
+
++++
+
+#### Elmyr features : failing tests
+
+```ini
+‘testSomething’ failed with fake seed = 0x4815162342
+```
+
+```kotlin
+  @Before fun forceSeed() {
+    forger.reset(4815162342L)
+  }
+```
+
++++
+
 ```kotlin
   @Test fun invalidateDataAfterTimeout(){
     val fakeTS = forger.aTimestamp()
@@ -185,23 +254,6 @@ class FooTest {
 
     assertFalse(result)
 }
-```
-
-+++
-
-#### Elmyr features
-
-```kotlin
-val userId = forger.anHexadecimalString()
-val userName = forger.aWord()
-val userBio = forger.aSentence()
-
-val userTags = forger.aStringArray(StringConstraint.WORD)
-
-val userEmail = forger.anEmail()
-val userHomepage = forger.aUrl()
-val userPhone = forger.aStringMatching("(0|+44)\\d{10}")
-
 ```
 
 ---
@@ -248,7 +300,7 @@ val userPhone = forger.aStringMatching("(0|+44)\\d{10}")
 
 ### The problem:
 
-#### Mocks are designed to make the test pass
+#### Mocks are designed to make the tests pass
 
 +++
 
@@ -259,14 +311,14 @@ val userPhone = forger.aStringMatching("(0|+44)\\d{10}")
 
 ```kotlin
   @Test fun testFoo() {
-    whenever(myMock.isEmpty()) doReturn(true)
-    whenever(myMock.isFull()) doReturn(false)
+    whenever(mockQueue.isEmpty()) doReturn(true)
+    whenever(mockQueue.getFirst() doThrow(new Exception())
     // …
   }
 
   @Test fun testBar() {
-    whenever(myMock.isEmpty()) doReturn(true)
-    whenever(myMock.isFull()) doReturn(true)
+    whenever(mockQueue.isEmpty()) doReturn(true)
+    whenever(mockQueue.getFirst() doReturn(null)
     // …
   }
 ```
@@ -275,7 +327,7 @@ val userPhone = forger.aStringMatching("(0|+44)\\d{10}")
 
 ### Solution ? 
 
-#### Prepare all the mocks in the setup method…
+#### Prepare all the mocks in the setup method… <!-- .element: class="fragment" -->
 
  - Mocks have single configuration <!-- .element: class="fragment" -->
  - All stubbing is done in one place <!-- .element: class="fragment" -->
@@ -288,17 +340,17 @@ val userPhone = forger.aStringMatching("(0|+44)\\d{10}")
 +++
 
 ```kotlin
-class Foo {
+class FooTest {
   @Before fun setupMock() {
-    whenever(myMock.isEmpty()) doReturn(true)
-    whenever(myMock.getFirst() doThrow(new Exception())
+    whenever(mockQueue.isEmpty()) doReturn(true)
+    whenever(mockQueue.getFirst() doThrow(new Exception())
   }
 }
 
-class Fiz {
+class FizTest {
   @Before fun setupMock() {
-    whenever(myMock.isEmpty()) doReturn(true)
-    whenever(myMock.getFirst() doReturn(null)
+    whenever(mockQueue.isEmpty()) doReturn(true)
+    whenever(mockQueue.getFirst() doReturn(null)
     // …
   }
 }
@@ -308,7 +360,7 @@ class Fiz {
 
 ### Solution ? 
 
-#### Use a separate class to setup the mocks
+#### Use a separate class to setup the mocks <!-- .element: class="fragment" -->
 
 ##### _Introducing Contract based mocking_ <!-- .element: class="fragment" -->
 
@@ -317,13 +369,12 @@ class Fiz {
 #### Defining the contract
 
 ```kotlin
-class BarContract {
-  val mockedBar : Bar = mock()
+class QueueContract {
+  val mockedQueue : Queue = mock()
 
   fun prepareEmpty() {
-    whenever(mock.isEmpty()).thenReturn(true)
-    whenever(mock.isFull()).thenReturn(false)
-    whenever(mock.getFirst().thenThrow(new Exception())
+    whenever(mockedQueue.isEmpty()).thenReturn(true)
+    whenever(mockedQueue.getFirst().thenThrow(new Exception())
   }
 }
 ```
@@ -334,15 +385,15 @@ class BarContract {
 
 ```kotlin
 class FooTest {
-  lateinit var barContract : BarContract
+  lateinit var queueContract : QueueContract
 
-  @Before fun setUpBar() {
-    barContract = new BarContract()
+  @Before fun setUpQueue() {
+    queueContract = new QueueContract()
   }
 
-  @Test fun testWithEmptyBar() {
-    barContract.prepareEmpty()
-    val mock = barContract.mockedBar
+  @Test fun testWithEmptyQueue() {
+    queueContract.prepareEmpty()
+    val mock = queueContract.mockedQueue
     // …
   }
 }
@@ -362,26 +413,25 @@ class FooTest {
 
 ### Solution ?
 
-#### Use the contract as test definition
+#### Use the contract as test definition <!-- .element: class="fragment" -->
 
 +++
 
 #### Introducing [Mesmaeker <i class="fa fa-github" aria-hidden="true"></i>](https://github.com/xgouchet/Mesmaeker/)
 
-(Still in αlphα)
+_(Still in αlphα)_
 
 +++
 
 #### Defining the contract
 
 ```kotlin
-open class BarContract 
-  : MockitoContract<Bar>(Bar::class.java) {
+open class QueueContract 
+  : MockitoContract<Queue>(Queue::class.java) {
 
   @Clause
-  fun whenEmpty() {
+  fun prepareEmpty() {
     whenever { it.isEmpty() }.thenReturn(true)
-    whenever { it.isFull() }.thenReturn(false)
     whenever { it.getFirst() }.thenThrow(new Exception())
   }
 }
@@ -394,11 +444,12 @@ open class BarContract
 ```kotlin
 class FooTest {
 
-  @Contract lateinit var barContract: BarContract
+  @Rule public BaseContractRule contracts = new BaseContractRule();
+  @Contract lateinit var queueContract: QueueContract
 
-  @Test fun testWithEmptyBar() {
-    barContract.whenEmpty()
-    val mock = barContract.getMock()
+  @Test fun testWithEmptyQueue() {
+    queueContract.prepareEmpty()
+    val mock = queueContract.getMock()
     // …
   }
 }
@@ -411,17 +462,17 @@ class FooTest {
 
 ```kotlin
 class BarTest (clause : String)
-  : ContractValidator<Bar, BarContract> (clause) {
+  : ContractValidator<Queue, QueueContract> (clause) {
 
   override fun instantiateContract()
-    : BarContract = BarContract()
+    : QueueContract = QueueContract()
   override fun instantiateSubject()
-    : Bar = Bar()
+    : Queue = Queue()
 
   companion object {
     @JvmStatic @Parameterized.Parameters()
     fun data(): Collection<Array<Any?>> {
-      return generateTestParameters(BarContract::class.java)
+      return generateTestParameters(QueueContract::class.java)
     }
   }
 }
@@ -433,7 +484,7 @@ class BarTest (clause : String)
 
 ```kotlin
   @Clause
-  fun withSize(size: Int) {
+  fun prepareWithSize(size: Int) {
     applyIfImplementation { it.resize(size) }
 
     whenever { it.size() }.thenReturn(size)
@@ -449,7 +500,7 @@ class BarTest (clause : String)
 ```kotlin
 override fun getClauseParams(clause: String): Array<Any?>? {
   when (contractClause) {
-    "withSize" -> return arrayOf(forger.aSmallInt())
+    "prepareWithSize" -> return arrayOf(forger.aSmallInt())
     else -> return emptyArray()
   }
 }
@@ -459,7 +510,7 @@ override fun getClauseParams(clause: String): Array<Any?>? {
 
 ## Conclusion
 
- - Remember, test can have bugs too <!-- .element: class="fragment" -->
+ - Remember, tests can have bugs and code smells too <!-- .element: class="fragment" -->
  - Try to think of what could go wrong <!-- .element: class="fragment" -->
  - Look for the edge cases <!-- .element: class="fragment" -->
 
@@ -477,5 +528,5 @@ override fun getClauseParams(clause: String): Array<Any?>? {
 
 [https://github.com/xgouchet/Elmyr](https://github.com/xgouchet/Elmyr)
 
-[https://github.com/xgouchet/Mesmaeker](https://github.com/xgouchet/Mesmaeker)
+[https://github.com/xgouchet/Mesmaeker](https://github.com/xgouchet/Mesmaeker) _(still in αlphα)_
 
