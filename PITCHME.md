@@ -1,7 +1,7 @@
 
-# Did your mocks read the EULA
+# Did your mocks read the Terms of Service ?
 
-#### Contracts for your mocks and Fakes
+#### Contracts for your mocks and fakes
 
 _CodeMobile UK 2018_ 
 
@@ -528,5 +528,6 @@ override fun getClauseParams(clause: String): Array<Any?>? {
 
 [https://github.com/xgouchet/Elmyr](https://github.com/xgouchet/Elmyr)
 
-[https://github.com/xgouchet/Mesmaeker](https://github.com/xgouchet/Mesmaeker) _(still in αlphα)_
+[https://github.com/xgouchet/Mesmaeker](https://github.com/xgouchet/Mesmaeker)
+ _(αlphα)_
 

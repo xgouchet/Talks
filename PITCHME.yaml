@@ -1,4 +1,5 @@
-transition : fade
+transition : slide
+logo : assets/workwell.png
 slide-number: true
 theme-override : PITCHME.css
-footnote : "Xavier F. Gouchet / @xgouchet / CC BY NC 4.0"
+footnote : "@xgouchet - @workwell"

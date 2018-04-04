@@ -1,6 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif');
 
+.slide-menu-button {
+    display : none;
+}
+
 .reveal h1, .reveal h2 {
     color : #2980b9;
 }
@@ -121,4 +125,13 @@
     border-radius: .25em;
     border : 0;/*1px solid #e74c3c !important;*/
     font-size : 80%;
+}
+
+footer#title-footer {
+    background: rgba(0,0,0,0.0)!important;
+    height: 3vh!important;
+}
+
+footer p#notification {
+   font-size : 2.5vh!important;
 }
