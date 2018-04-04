@@ -17,7 +17,7 @@ _CodeMobile UK 2018_
 
 ###### <a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
 
-+++?image=assets/Slides_WW_EN.png&size=cover
++++?image=assets/Slides_WW_EN.jpg&size=cover
 
 ---
 
