@@ -1,4 +1,9 @@
+
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+
+.slide-menu-button {
+    display : none;
+}
 
 .reveal h1, .reveal h2 {
     color : #2980b9;
@@ -33,6 +38,17 @@
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
+
+.reveal pre {
+    margin : 0;
+    width : 100%;
+}
+
+.reveal pre code {
+    padding : 16px;
+}
+
+
 .hljs, .lang-plain {
     background : #2c3e50;
     color : #ecf0f1;
@@ -109,4 +125,13 @@
     border-radius: .25em;
     border : 0;/*1px solid #e74c3c !important;*/
     font-size : 80%;
+}
+
+footer#title-footer {
+    background: rgba(0,0,0,0.0)!important;
+    height: 3vh!important;
+}
+
+footer p#notification {
+   font-size : 2.5vh!important;
 }

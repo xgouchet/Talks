@@ -9,12 +9,14 @@ _Given at a conference… Maybe…_
 
 ## About… Xavier F. Gouchet
 
-#### Lead Android Engineer at WorkWell <img src="logos/workwell.png" class="logo-inline"/>
+#### Lead Android Engineer at WorkWell ![](assets/workwell.png) <!-- .element class="logo-inline" -->
 
 #### Fluent in Android since Cupcake
 
 
 ###### <a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
+
++++?image=assets/Slides_WW_EN.png&size=cover
 
 ---
 
