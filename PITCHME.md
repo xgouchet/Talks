@@ -1,6 +1,6 @@
 # Rock the Gradle
 
-### ![](assets/gradle.png) <!-- .element class="logo" -->
+<img src="assets/gradle.png" class="logo-inline"/>
 
 ## Rule the world
 
@@ -20,6 +20,34 @@ _Android Makers, 2018_
 ###### <a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
 
 +++?image=assets/Slides_WW_EN.png&size=cover
+
+
+---
+
+## A brief Gradle <img src="assets/gradle.png" class="logo-inline"/> introduction
+
++++
+
+### The Gradle algorithm
+
+@ul
+ - Initialization
+ - Configuration
+ - Execution
+@ulend
+
+Note:
+- Initialisation : lists projects; 
+- Config : create tasks, resolve dependencies; 
+- Execution : select & execute tasks
+
++++
+
+See it yourself using the command 
+
+```bash
+$ gradle build --profile
+```
 
 ---
 
@@ -47,20 +75,23 @@ _Android Makers, 2018_
 
 ### How does it work ?
 
-- Works like any module in your project <!-- .element class="fragment" -->
-- Compiled and tested before any gradle task <!-- .element class="fragment" -->
-- Groovy, Java, Kotlin, … <!-- .element class="fragment" -->
+@ul
+- Works like any module in your project 
+- Compiled and _tested_ before any gradle task 
+- Groovy, Java, Kotlin, … 
+@ulend
 
 +++
 
 ### What can it do for me ?
 
-- Better dependency management <!-- .element class="fragment" -->
-- Helper classes / methods <!-- .element class="fragment" -->
-- Custom tasks in dedicated classes <!-- .element class="fragment" -->
-- Custom plugin <!-- .element class="fragment" -->
-
-All of this local && versionned with the project <!-- .element class="fragment" -->
+@ul
+- Better dependency management 
+- Helper classes / methods 
+- Custom tasks in dedicated classes 
+- Custom plugin 
+- Local a versionned with the project
+@ulend
 
 ---
 
@@ -82,10 +113,12 @@ dependencies {
 
 ## Reminders 
 
+@ul
  - Tasks & Extensions classes **must be** open
  - `buildSrc` is always built and tested
  - Your build code should be as clean and maintained as your production code
      - SOLID, KISS, DRY
+@ulend
 
 ---
 
