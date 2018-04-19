@@ -95,7 +95,7 @@ $ gradle build --profile
 
 ---
 
-## Let's see some code
+## Diving in the good stuff
 
 +++
 
@@ -109,15 +109,42 @@ dependencies {
 }
 ```
 
++++
+
+### Let's see some code
+
++++
+
+### Sidenote on task management
+
++++
+
+#### Dependency
+
+@ul
+ - `dependsOn`
+ - `finalizedBy`
+@ulend
+
++++
+
+#### Ordering
+
+@ul
+ - `mustRunAfter`
+ - `shouldRunAfter`
+@ulend
+
 ---
 
 ## Reminders 
 
 @ul
  - Tasks & Extensions classes **must be** open
+ - DSL can go as deep as you need
  - `buildSrc` is always built and tested
- - Your build code should be as clean and maintained as your production code
-     - SOLID, KISS, DRY
+ - Use `apply from: "$project.rootDir/config/findbugs.gradle"`
+ - Your build code should be as clean as your production code
 @ulend
 
 ---
