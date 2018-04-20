@@ -160,10 +160,8 @@ object Dependencies {
   const val Kotlin = "1.2.30"
   const val AndroidSupportLib = "27.1.1"
  }
-
  object Libraries {
   const val KotlinJre7 = "org.jetbrains.kotlin:kotlin-stdlib-jre7:${Versions.Kotlin}"
-
   @JvmField
   val SupportLibs = arrayOf("com.android.support:appcompat-v7:${Versions.AndroidSupportLib}",
     "com.android.support:design:${Versions.AndroidSupportLib}",
@@ -172,8 +170,8 @@ object Dependencies {
 }
 ```
 @[2-5]
-@[7-14]
-@[10]
+@[6-12]
+@[8]
 
 +++
 
@@ -207,22 +205,22 @@ open class DownloadStrings : DefaultTask() {
 
  @TaskAction
  fun performTask() {
-   for (l in languages) {
-     Fuel.download("http://192.168.1.42/$l/strings.xml")
-       .destination { r, u -> File("$path/src/main/res/values-$l/strings.xml") }
-       .response { req, res, result -> println("$l → ${res.statusCode}") }
-   }
+  for (l in languages) {
+   Fuel.download("http://192.168.1.42/$l/strings.xml")
+    .destination { _, _ -> File("$path/src/main/res/values-$l/strings.xml") }
+    .response { _, res, _ -> println("$l → ${res.statusCode}") }
+  }
  }
 }
 ```
 
-@[1,17]
-@[6,7,16]
-@[3,4]
-@[8,15]
+@[1,13]
+@[5,6,12]
+@[2,3]
+@[7,11]
+@[8]
 @[9]
-@[10-13]
-@[14]
+@[10]
 
 +++
 
@@ -239,8 +237,163 @@ task downloadStrings(type: DownloadStrings) {
 
 ---
 
+## Going Further
+
+@ul
+- Add an extension
+- Task dependency
+@ulend
+
++++
+
+#### `buildSrc/src/main/kotlin/RemoteExt.kt`
+
+```kotlin
+open class RemoteExt(var languages: Array<String> = arrayOf(),
+                     var remoteHost: String = "127.0.0.1")
+```
+
++++
+
+#### `buildSrc/src/main/kotlin/RemotePlugin.kt`
+
+```kotlin
+class RemoteL10n : Plugin<Project> {
+  override fun apply(project: Project) {
+    val ext = project.extensions
+               .create("remoteStrings", RemoteExt::class.java)
+    val task = project.tasks
+               .create("downloadStrings", DownloadStrings::class.java)
+               .apply {
+        projectBasePath = project.projectDir.path
+        configuration = ext
+    }
+    project.afterEvaluate { p ->
+      p.tasks
+        .withType(AppPreBuildTask::class.java){ it.dependsOn(task) }
+    }
+  }
+}
+```
+
+@[1,16]
+@[2,15]
+@[3,4]
+@[5,6]
+@[5-10]
+@[11-14]
+
++++
+
+#### `buildSrc/build.gradle`
+
+```groovy
+// […]
+apply plugin: 'java-gradle-plugin'
+
+// automatically configures the jar file’s META-INF directory.
+gradlePlugin {
+  plugins {
+    remoteL10n {
+      id = "remoteL10n"
+      implementationClass = "com.packagename.RemoteL10n"
+    }
+  }
+}
+
+```
+
++++
+
+#### `app/build.gradle`
+
+```groovy
+// […]
+apply plugin: "remoteL10n"
+
+remoteStrings {
+    languages = ["en", "fr"]
+    remoteHost = "192.168.1.42"
+}
+```
+
+---
+
+## Going even furtherer
 
 
+@ul
+- Create a DSL to configure flavors separately
+@ulend
+
+
++++
+
+#### `buildSrc/src/main/kotlin/RemoteExt.kt`
+
+```kotlin
+open class RemoteExt {
+    var remoteHost: String = "127.0.0.1"
+    var variants: NamedDomainObjectContainer<VariantL10n>? = null
+
+    fun variants(configureClosure: Closure<VariantL10n>) {
+        variants?.configure(configureClosure)
+    }
+}
+
+open class VariantL10n(val name: String) {
+    var languages: Array<String> = arrayOf()
+}
+```
+
+@[10-12]
+@[3]
+@[5-7]
+
++++
+
+#### `buildSrc/src/main/kotlin/RemotePlugin.kt`
+
+```kotlin
+class RemoteL10n : Plugin<Project> {
+  override fun apply(project: Project) {
+    val ext = project.extensions
+               .create("remoteStrings", RemoteExt::class.java)
+    ext.variants =  project.container(VariantL10n::class.java)
+
+    // …
+  }
+}
+```
+
+@[3-4]
+@[5]
+
++++
+
+#### `app/build.gradle`
+
+```groovy
+remoteL10n {
+    remoteHost = "192.168.1.42"
+    variants {
+        debug {
+            languages = ["en"]
+        }
+        freeRelease  {
+            languages = ["fr", "en"]
+        }
+        fullRelease  {
+            languages = ["fr", "en", "es", "de"]
+        }
+    }
+}
+```
+@[3-13]
+@[4-6]
+@[7-12]
+
+---
 
 ### Sidenote on task management
 
