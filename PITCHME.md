@@ -80,6 +80,7 @@ Note:
 ├─📄 build.gradle
 └─📄 settings.gradle
 ```
+
 @[1]
 @[1,9-10]
 @[1-4]
@@ -151,7 +152,7 @@ dependencies {
 +++
 
 ### After 
-#### <i class="fa fa-edit" aria-hidden="true"></i> `buildSrc/src/main/kotlin/Dependencies.kt`
+#### `buildSrc/src/main/kotlin/Dependencies.kt`
 
 ```kotlin
 object Dependencies {
@@ -170,6 +171,9 @@ object Dependencies {
  }
 }
 ```
+@[2-5]
+@[7-14]
+@[10]
 
 +++
 
@@ -185,6 +189,58 @@ dependencies {
 }
 ```
 ---
+
+## Custom Task
+
+#### A concrete example : 
+
+Shared translation between <i class="fa fa-apple" aria-hidden="true"></i>, <i class="fa fa-android" aria-hidden="true"></i> and <i class="fa fa-windows" aria-hidden="true"></i>
+
++++
+
+#### `buildSrc/src/main/kotlin/DownloadStrings.kt`
+
+```kotlin
+open class DownloadStrings : DefaultTask() {
+ var languages = arrayOf("en")
+ var path = ""
+
+ @TaskAction
+ fun performTask() {
+   for (l in languages) {
+     Fuel.download("http://192.168.1.42/$l/strings.xml")
+       .destination { r, u -> File("$path/src/main/res/values-$l/strings.xml") }
+       .response { req, res, result -> println("$l → ${res.statusCode}") }
+   }
+ }
+}
+```
+
+@[1,17]
+@[6,7,16]
+@[3,4]
+@[8,15]
+@[9]
+@[10-13]
+@[14]
+
++++
+
+#### `app/build.gradle`
+
+```groovy
+import DownloadStrings
+
+task downloadStrings(type: DownloadStrings) {
+    languages = ["en", "fr"]
+    projectBasePath = projectDir
+}
+```
+
+---
+
+
+
 
 ### Sidenote on task management
 

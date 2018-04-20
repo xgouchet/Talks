@@ -3,3 +3,4 @@ logo : assets/workwell.png
 slide-number: true
 theme-override : PITCHME.css
 footnote : "@xgouchet - @workwell"
+highlight : androidstudio
