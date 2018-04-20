@@ -26,6 +26,17 @@ _Android Makers, 2018_
 
 ## A brief Gradle <img src="assets/gradle.png" class="logo-inline"/> introduction
 
+
++++
+
+### What is Gradle ?
+
+@ul
+ - General purpose
+ - Dependency Management System
+ - Build management (dependency based)
+@ulend
+
 +++
 
 ### The Gradle algorithm
@@ -43,11 +54,13 @@ Note:
 
 +++
 
-See it yourself using the command 
+### Show of hands
 
-```bash
-$ gradle build --profile
-```
+@ul
+ - Configured project in gradle
+ - Wrote a custom task
+ - Wrote a custom plugin
+@ulend
 
 ---
 
@@ -55,21 +68,22 @@ $ gradle build --profile
 
 +++
 
-```
+```plain
 ┬📂 MyProject
 ├┬📂 app/
 │├──📁 src/
 │└──📄 build.gradle
 ├┬📂 buildSrc/
 │├──📁 src/
-│└──📄 build.gradle
+│├──📄 build.gradle ?
+│└──📄 settings.gradle
 ├─📄 build.gradle
 └─📄 settings.gradle
 ```
 @[1]
-@[1,8-9]
+@[1,9-10]
 @[1-4]
-@[1,5-7]
+@[1,5-8]
 
 +++
 
@@ -99,7 +113,13 @@ $ gradle build --profile
 
 +++
 
-### Default `build.gradle`
+### Step 1 : Create a `buildSrc` folder
+
++++
+
+### Step 2 : … that's it
+
+Default `build.gradle`
 
 ```gradle
 apply plugin: 'groovy'
@@ -109,11 +129,62 @@ dependencies {
 }
 ```
 
+---
+
+## Dependency Management
+
 +++
 
-### Let's see some code
+### Before 
+#### `app/build.gradle`
+
+```groovy
+dependencies {
+ implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+ implementation "com.android.support:appcompat-v7:$android_support_version"
+ implementation "com.android.support:design:$android_support_version"
+ implementation "com.android.support:support-annotations:$android_support_version"
+}
+```
 
 +++
+
+### After 
+#### <i class="fa fa-edit" aria-hidden="true"></i> `buildSrc/src/main/kotlin/Dependencies.kt`
+
+```kotlin
+object Dependencies {
+ object Versions {
+  const val Kotlin = "1.2.30"
+  const val AndroidSupportLib = "27.1.1"
+ }
+
+ object Libraries {
+  const val KotlinJre7 = "org.jetbrains.kotlin:kotlin-stdlib-jre7:${Versions.Kotlin}"
+
+  @JvmField
+  val SupportLibs = arrayOf("com.android.support:appcompat-v7:${Versions.AndroidSupportLib}",
+    "com.android.support:design:${Versions.AndroidSupportLib}",
+    "com.android.support:support-annotations:${Versions.AndroidSupportLib}")
+ }
+}
+```
+
++++
+
+### After 
+#### `app/build.gradle`
+
+```groovy
+import Dependencies
+
+dependencies {
+    implementation Dependencies.Libraries.KotlinJre7
+    implementation Dependencies.Libraries.SupportLibs
+}
+```
+---
 
 ### Sidenote on task management
 
