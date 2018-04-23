@@ -81,15 +81,6 @@ _Android Makers, 2018_
 @[1-4]
 @[1,5-8]
 
-+++
-
-### How does it work ?
-
-@ul
-- Works like any module in your project 
-- Compiled and _tested_ before any gradle task 
-- Groovy, Java, Kotlin, … 
-@ulend
 
 +++
 
@@ -101,6 +92,16 @@ _Android Makers, 2018_
 - Custom tasks in dedicated classes 
 - Custom plugin 
 - Local a versionned with the project
+@ulend
+
++++
+
+### How does it work ?
+
+@ul
+- Works like any module in your project 
+- Compiled and _tested_ before any gradle task 
+- Groovy, Java, Kotlin, … 
 @ulend
 
 ---
@@ -128,6 +129,29 @@ dependencies {
 @[1]
 @[4]
 @[5]
+
++++
+
+### Step 2 _(bis)_ : with Kotlin
+
+`̀``groovy
+buildscript {
+ dependencies { classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.30" }
+ repositories { mavenCentral() }
+}
+apply plugin: 'kotlin'
+
+repositories { 
+    mavenCentral() 
+    google()
+}
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.30"
+    compile "com.android.tools.build:gradle:3.1.1"
+}
+```
+@[1-5]
+@[7-14]
 
 ---
 
@@ -187,6 +211,46 @@ dependencies {
     implementation Dependencies.Libraries.SupportLibs
 }
 ```
+
+---
+
+## Helper class/methods
+
++++
+
+#### `buildSrc/src/main/kotlin/Helper.kt`
+
+```kotlin
+object Helper {
+    @JvmStatic
+    @JvmOverloads
+    fun ImThirsty(count: Int = 42) {
+        for (i in count downTo 0) {
+            println("$i bottles of beer on the wall, \n" +
+                    "Take one down and pass it around…")
+        }
+    }
+}
+```
+@[1,10]
+@[4-9]
+@[2]
+@[3]
+
++++
+
+#### `app/build.gradle`
+
+```groovy
+import Helper
+task thirsty {
+    doLast {
+        Helper.ImThirsty()
+        Helper.ImThirsty(3)
+    }
+}
+```
+
 ---
 
 ## Custom Task
@@ -301,15 +365,23 @@ remoteStrings {
 
 +++
 
-
 ### Sidenote on task management
 
 ```kotlin
+class RemoteL10n : Plugin<Project> {
+  override fun apply(project: Project) {
+    // …
     project.afterEvaluate { p ->
       p.tasks
-        .withType(GenerateResValues::class.java){ it.dependsOn(task) }
+        .withType(GenerateResValues::class.java){ 
+            it.dependsOn(task) 
+        }
     }
+  }
+}
 ```
+
+@[7]
 
 +++
 
@@ -471,6 +543,26 @@ class RemoteL10nTest {
 
 +++
 
+```kotlin
+interface Downloader {
+    fun downloadFile(path: String,
+                     destination: File,
+                     onSuccess: () -> Unit = {},
+                     onError: (Int) -> Unit = {})
+}```
+
++++
+
+```kotlin
+interface Fetcher {
+    fun fetchStrings(downloader: Downloader,
+                     projectBasePath: String,
+                     configuration: RemoteL10nExtension)
+}
+```
+
++++
+
 #### `buildSrc/src/main/kotlin/DownloadStrings.kt`
 
 ```kotlin
@@ -480,21 +572,29 @@ open class DownloadStrings : DefaultTask() {
     var configuration: RemoteExt = RemoteExt()
 
     @TaskAction
-    fun doIt() {
-        RemoteL10nFetcher(
+    fun performTask() {
+        val fetcher = RemoteL10nFetcher()
+        fetcher.fetchString(
                 FuelDownloader(), 
                 projectBasePath, 
-                configuration
-            ).fetchStrings()
+                configuration)
     }
 }
 ```
 
 @[8-12]
+@[8]
 @[9]
 @[10]
 @[11]
 @[12]
+
++++
+
+@ul
+- RemoteL10nFetcher can be easily tested
+- Task itself has minmal code and no business logic
+@ulend
 
 ---
 
@@ -512,7 +612,7 @@ apply plugin: 'java-gradle-plugin'
 gradlePlugin {
   plugins {
     remoteL10n {
-      id = "remoteL10n"
+      id = "remoteL10n" // the important one -
       implementationClass = "com.packagename.RemoteL10n"
     }
   }
