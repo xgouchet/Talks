@@ -47,11 +47,6 @@ _Android Makers, 2018_
  - Execution
 @ulend
 
-Note:
-- Initialisation : lists projects; 
-- Config : create tasks, resolve dependencies; 
-- Execution : select & execute tasks
-
 +++
 
 ### Show of hands
@@ -268,20 +263,19 @@ class RemoteL10n : Plugin<Project> {
         projectBasePath = project.projectDir.path
         configuration = ext
     }
-    project.afterEvaluate { p ->
-      p.tasks
-        .withType(AppPreBuildTask::class.java){ it.dependsOn(task) }
+    project.afterEvaluate { p -> p.tasks
+        .withType(GenerateResValues::class.java){ it.dependsOn(task) }
     }
   }
 }
 ```
 
-@[1,16]
-@[2,15]
+@[1,15]
+@[2,14]
 @[3,4]
 @[5,6]
 @[5-10]
-@[11-14]
+@[11-13]
 
 +++
 
@@ -299,9 +293,7 @@ gradlePlugin {
       implementationClass = "com.packagename.RemoteL10n"
     }
   }
-}
-
-```
+}```
 
 +++
 
@@ -316,6 +308,37 @@ remoteStrings {
     remoteHost = "192.168.1.42"
 }
 ```
+
++++
+
+
+### Sidenote on task management
+
+```
+    project.afterEvaluate { p ->
+      p.tasks
+        .withType(GenerateResValues::class.java){ it.dependsOn(task) }
+    }
+```
+
++++
+
+#### Dependency
+
+@ul
+ - `dependsOn`
+ - `finalizedBy`
+@ulend
+
++++
+
+#### Ordering
+
+@ul
+ - `mustRunAfter`
+ - `shouldRunAfter`
+@ulend
+
 
 ---
 
@@ -395,25 +418,90 @@ remoteL10n {
 
 ---
 
-### Sidenote on task management
+## Testing your code
+
+### #TestMatters
 
 +++
 
-#### Dependency
+```kotlin
+class RemoteL10nTest {
 
-@ul
- - `dependsOn`
- - `finalizedBy`
-@ulend
+    lateinit var fakeProject: Project
+
+    @Before
+    fun setUp() {
+        fakeProject = ProjectBuilder.builder().build()
+
+        fakeProject.plugins.apply(AppPlugin::class.java)
+        fakeProject.plugins.apply(RemoteL10n::class.java)
+        fakeProject.evaluate() // using a reflection UglyHack™
+    }
+}```
+
+@[1,13]
+@[3]
+@[5-7,12]
+@[9]
+@[10]
+@[11]
 
 +++
 
-#### Ordering
+```kotlin
+class RemoteL10nTest {
+    // …
+    @Test
+    fun addsExtension() {
+        val extension = fakeProject.extensions.getByName(RemoteL10n.EXTENSION_NAME)
+        assert(extension is RemoteL10nExtension)
+    }
 
-@ul
- - `mustRunAfter`
- - `shouldRunAfter`
-@ulend
+    @Test
+    fun addsTask() {
+        val task = fakeProject.tasks.getByName(RemoteL10n.TASK_NAME)
+        assert(task is DownloadStrings)
+    }
+}```
+
+@[3-7]
+@[5]
+@|6]
+@[9-13]
+@[11]
+@[12]
+
++++
+
+### Unit Testing the task itself
+
+- Harder to do directly 
+- Delegate all business logic to a dedicated class
+
++++
+
+```kotlin
+open class DownloadStrings : DefaultTask() {
+
+    var projectBasePath = "."
+    var configuration: RemoteExt = RemoteExt()
+
+    @TaskAction
+    fun doIt() {
+        RemoteL10nFetcher(
+                FuelDownloader(), 
+                projectBasePath, 
+                configuration
+            ).fetchStrings()
+    }
+}
+```
+
+@[8-12]
+@[9]
+@[10]
+@[11]
+@[12]
 
 ---
 
