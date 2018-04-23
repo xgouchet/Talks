@@ -17,10 +17,15 @@ _Android Makers, 2018_
 #### Fluent in Android since Cupcake
 
 
-###### <a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
+##### [@xgouchet]() on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …
 
 +++?image=assets/Slides_WW_EN.png&size=cover
 
++++
+
+### Get the Slides at 
+
+## [bit.ly/RockTheGradle](http://bit.ly/RockTheGradle)
 
 ---
 
@@ -134,7 +139,7 @@ dependencies {
 
 ### Step 2 _(bis)_ : with Kotlin
 
-`̀``groovy
+```groovy
 buildscript {
  dependencies { classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.30" }
  repositories { mavenCentral() }
@@ -333,19 +338,15 @@ class RemoteL10n : Plugin<Project> {
         projectBasePath = project.projectDir.path
         configuration = ext
     }
-    project.afterEvaluate { p -> p.tasks
-        .withType(GenerateResValues::class.java){ it.dependsOn(task) }
-    }
   }
 }
 ```
 
-@[1,15]
-@[2,14]
+@[1,12]
+@[2,11]
 @[3,4]
 @[5,6]
 @[5-10]
-@[11-13]
 
 
 +++
@@ -641,14 +642,114 @@ apply plugin: "remoteL10n"
 ```kotlin
 open class DownloadStrings : DefaultTask() {
 
-    init {
-        group = "makers"
-        description = "Downloads strings.xml from a remote server"
-    }
+  init {
+    group = "makers"
+    description = "Downloads strings.xml from a remote server."
+  }
 
-    // …
+  // …
 }
 ```
+@[4]
+@[5]
+
++++
+
+#### `gradle :tasks`
+
+
+```markdown
+Android tasks
+-------------
+androidDependencies - Displays the Android dependencies.
+signingReport - Displays the signing info for each variant.
+sourceSets - Prints out all the source sets defined in the project.
+…
+Makers tasks
+------------
+downloadRemoteStrings - Downloads strings.xml from a remote server.
+…
+
+```
+@[7-9]
+
+
++++
+
+### Defining Inputs / Outputs
+
+@ul
+ - `@Input` / `@Output` serializable objects
+ - `@InputFile(s)` / `@OutputFile(s)`
+ - `@InputDirectory(ies)` / `@OutputDirectory(ies)`
+ - `@Nested` / `Console` / `@Internal` / `@Destroys` / …
+ - `@SkipWhenEmpty` / `@Optionnal`
+@ulend
+
++++
+
+#### `buildSrc/src/main/kotlin/DownloadStrings.kt`
+
+```kotlin
+@Input
+fun getExtInputs(): List<String> {
+  val inputs = mutableListOf<String>()
+  configuration.variants?.forEach { v ->
+    v.languages.forEach { l ->
+      inputs.add("${v.name}/$l")
+    }
+  }
+  return inputs
+}
+```
+@[1]
+@[2,10]
+@[3]
+@[4-8]
+@[9]
+
+
++++
+
+#### `buildSrc/src/main/kotlin/DownloadStrings.kt`
+
+```kotlin
+@OutputFiles
+fun getTaskOOutputs(): List<File> {
+  val outputs = mutableListOf<File>()
+  configuration.variants?.forEach { v ->
+    v.languages.forEach { l ->
+      outputs.add(
+        File("$projectBasePath/src/${v.name}/res/values-$l/strings.xml")
+      )
+    }
+  }
+  return outputs
+}
+```
+
++++
+
+```bash
+:app:downloadRemoteStrings UP-TO-DATE
+```
+
++++
+
+> … But then it will never update until we change the config ?
+
++++
+
+```kotlin
+@Input
+fun getDateInput() : String {
+  val formatter = DateTimeFormatter.ISO_DATE
+  return LocalDateTime.now().format(formatter)
+}
+```
+
+
+
 
 ---
 
@@ -687,5 +788,4 @@ open class DownloadStrings : DefaultTask() {
 
 #### Any Question ? 
 
--  Sample app : <a href="https://github.com/xgouchet/RockTheGradle"><i class="fa fa-github" aria-hidden="true"></i>/xgouchet/RockTheGradle</a>
-- Slides : <a href="https://gitpitch.com/xgouchet/Talks/AndroidMakers_RockTheGradle/"><i class="fa fa-github" aria-hidden="true"></i>/xgouchet/Talks/AndroidMakers_RockTheGradle</a>
+Sample app : <a href="https://github.com/xgouchet/RockTheGradle"><i class="fa fa-github" aria-hidden="true"></i>/xgouchet/RockTheGradle</a>
