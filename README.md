@@ -1,9 +1,15 @@
-# Talks
+# Talk : Rock the Gradle, Rule the world
 
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/xgouchet/Talks/master?grs=github&t=white) 
-![CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc/4.0/80x15.png) 
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/xgouchet/Talks/AndroidMakers_RockTheGradle?grs=github&t=white) 
+[![CC BY-NC 4.0](https://img.shields.io/badge/CC-BY--NC-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/2.0/)
 
-> _This repository contains my talks in markdown format, readable via [GitPitch](https://gitpitch.com/xgouchet/Talks)._
+## Watch the slides
+
+#### You can watch the slides [online here](https://gitpitch.com/xgouchet/Talks/AndroidMakers_RockTheGradle?grs=github&t=white) 
+
+## History
+
+This talk was written for a presentation at the [Android Makers 2018](androidmakers.fr).
 
 ## Licence
 

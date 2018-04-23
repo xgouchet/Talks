@@ -668,5 +668,5 @@ open class DownloadStrings : DefaultTask() {
 
 #### Any Question ? 
 
-[github.com/xgouchet/RockTheGradle](https://github.com/xgouchet/RockTheGradle)
-
+-  Sample app : <a href="https://github.com/xgouchet/RockTheGradle"><i class="fa fa-github" aria-hidden="true"></i>/xgouchet/RockTheGradle</a>
+- Slides : <a href="https://gitpitch.com/xgouchet/Talks/AndroidMakers_RockTheGradle/"><i class="fa fa-github" aria-hidden="true"></i>/xgouchet/Talks/AndroidMakers_RockTheGradle</a>
