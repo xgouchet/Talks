@@ -24,7 +24,7 @@ _Android Makers, 2018_
 
 ---
 
-## A brief Gradle <img src="assets/gradle.png" class="logo-inline"/> introduction
+## A brief Gradle introduction
 
 
 +++
@@ -115,15 +115,19 @@ _Android Makers, 2018_
 
 ### Step 2 : … that's it
 
-Default `build.gradle`
+##### Default `build.gradle`
 
 ```gradle
 apply plugin: 'groovy'
+
 dependencies {
     compile gradleApi()
     compile localGroovy()
 }
 ```
+@[1]
+@[4]
+@[5]
 
 ---
 
@@ -136,11 +140,11 @@ dependencies {
 
 ```groovy
 dependencies {
- implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+ implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:1.2.30"
 
- implementation "com.android.support:appcompat-v7:$android_support_version"
- implementation "com.android.support:design:$android_support_version"
- implementation "com.android.support:support-annotations:$android_support_version"
+ implementation "com.android.support:appcompat-v7:27.1.1"
+ implementation "com.android.support:design:27.1.1"
+ implementation "com.android.support:support-annotations:27.1.1"
 }
 ```
 
@@ -166,6 +170,8 @@ object Dependencies {
 ```
 @[2-5]
 @[6-12]
+@[7]
+@[8-11]
 @[8]
 
 +++
@@ -187,7 +193,7 @@ dependencies {
 
 #### A concrete example : 
 
-Shared translation between <i class="fa fa-apple" aria-hidden="true"></i>, <i class="fa fa-android" aria-hidden="true"></i> and <i class="fa fa-windows" aria-hidden="true"></i>
+Shared translations between <i class="fa fa-apple" aria-hidden="true"></i>, <i class="fa fa-android" aria-hidden="true"></i> and <i class="fa fa-windows" aria-hidden="true"></i>
 
 +++
 
@@ -195,7 +201,7 @@ Shared translation between <i class="fa fa-apple" aria-hidden="true"></i>, <i cl
 
 ```kotlin
 open class DownloadStrings : DefaultTask() {
- var languages = arrayOf("en")
+ var languages : Array<String> = arrayOf()
  var path = ""
 
  @TaskAction
@@ -277,23 +283,6 @@ class RemoteL10n : Plugin<Project> {
 @[5-10]
 @[11-13]
 
-+++
-
-#### `buildSrc/build.gradle`
-
-```groovy
-// […]
-apply plugin: 'java-gradle-plugin'
-
-// automatically configures the jar file’s META-INF directory.
-gradlePlugin {
-  plugins {
-    remoteL10n {
-      id = "remoteL10n"
-      implementationClass = "com.packagename.RemoteL10n"
-    }
-  }
-}```
 
 +++
 
@@ -301,7 +290,8 @@ gradlePlugin {
 
 ```groovy
 // […]
-apply plugin: "remoteL10n"
+import RemoteL10n
+apply plugin: RemoteL10n
 
 remoteStrings {
     languages = ["en", "fr"]
@@ -314,7 +304,7 @@ remoteStrings {
 
 ### Sidenote on task management
 
-```
+```kotlin
     project.afterEvaluate { p ->
       p.tasks
         .withType(GenerateResValues::class.java){ it.dependsOn(task) }
@@ -342,7 +332,7 @@ remoteStrings {
 
 ---
 
-## Going even furtherer
+## Going even further
 
 
 @ul
@@ -450,35 +440,38 @@ class RemoteL10nTest {
 
 ```kotlin
 class RemoteL10nTest {
-    // …
-    @Test
-    fun addsExtension() {
-        val extension = fakeProject.extensions.getByName(RemoteL10n.EXTENSION_NAME)
-        assert(extension is RemoteL10nExtension)
-    }
+  // …
+  @Test fun addsExtension() {
+    val extension = fakeProject.extensions
+                           .getByName(RemoteL10n.EXTENSION_NAME)
+    assert(extension is RemoteL10nExtension)
+  }
 
-    @Test
-    fun addsTask() {
-        val task = fakeProject.tasks.getByName(RemoteL10n.TASK_NAME)
-        assert(task is DownloadStrings)
-    }
+  @Test fun addsTask() {
+    val task = fakeProject.tasks.getByName(RemoteL10n.TASK_NAME)
+    assert(task is DownloadStrings)
+  }
 }```
 
 @[3-7]
-@[5]
-@|6]
-@[9-13]
+@[4,5]
+@[6]
+@[9-12]
+@[10]
 @[11]
-@[12]
 
 +++
 
 ### Unit Testing the task itself
 
+@ul
 - Harder to do directly 
 - Delegate all business logic to a dedicated class
+@ulend
 
 +++
+
+#### `buildSrc/src/main/kotlin/DownloadStrings.kt`
 
 ```kotlin
 open class DownloadStrings : DefaultTask() {
@@ -502,6 +495,60 @@ open class DownloadStrings : DefaultTask() {
 @[10]
 @[11]
 @[12]
+
+---
+
+## Tips and Tricks
+
++++
+
+### Aliasing the plugin
+
+#### `buildSrc/build.gradle`
+
+```groovy
+apply plugin: 'java-gradle-plugin'
+
+gradlePlugin {
+  plugins {
+    remoteL10n {
+      id = "remoteL10n"
+      implementationClass = "com.packagename.RemoteL10n"
+    }
+  }
+}```
+
+@[1]
+@[3-10]
+@[5-8]
+
++++
+
+### Aliasing the plugin
+
+#### `app/build.gradle`
+
+```groovy
+apply plugin: "remoteL10n"
+```
+
++++
+
+### Add task category
+
+#### `buildSrc/src/main/kotlin/DownloadStrings.kt`
+
+```kotlin
+open class DownloadStrings : DefaultTask() {
+
+    init {
+        group = "makers"
+        description = "Downloads strings.xml from a remote server"
+    }
+
+    // …
+}
+```
 
 ---
 
