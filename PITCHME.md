@@ -652,6 +652,25 @@ open class DownloadStrings : DefaultTask() {
 
 ---
 
+## What else ?
+
+@ul
+ - Generate source code (JavaPoet / KotlinPoet / … )
+ - Generate resources (drawables, layouts, …)
+ - Custom lint / analysis / …
+@ulend
+
++++
+
+## What next ?
+
+@ul
+ - Cleanup your Gradle scripts
+ - Publish your plugins
+@ulend
+
+---
+
 ## Reminders 
 
 @ul
