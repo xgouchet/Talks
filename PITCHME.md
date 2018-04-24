@@ -31,6 +31,16 @@ _Android Makers, 2018_
 
 ## A brief Gradle introduction
 
++++
+
+### Show of hands
+
+@ul
+ - Configured project in gradle
+ - Write a custom task
+ - Write a custom plugin
+ - Followed `Kotlinify your Gradle` by Alexander Gherschon
+@ulend
 
 +++
 
@@ -52,15 +62,6 @@ _Android Makers, 2018_
  - Execution
 @ulend
 
-+++
-
-### Show of hands
-
-@ul
- - Configured project in gradle
- - Wrote a custom task
- - Wrote a custom plugin
-@ulend
 
 ---
 
@@ -748,7 +749,29 @@ fun getDateInput() : String {
 }
 ```
 
++++
 
+### Incremental Task
+
+```kotlin
+@TaskAction
+fun incrementalAction(inputs: IncrementalTaskInputs) {
+  if (inputs.isIncremental) {
+    inputs.outOfDate { println("Out of date: ${it.file.name}") }
+    inputs.removed { println("Removed: ${it.file.name}") }
+  } 
+  else {
+    // …
+  }
+}
+```
+
+@[1]
+@[2]
+@[3-6]
+@[4]
+@[5]
+@[7-9]
 
 
 ---
