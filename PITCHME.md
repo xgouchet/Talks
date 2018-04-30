@@ -7,15 +7,23 @@ _Given at a conference… Maybe…_
 
 ---
 
-![Deezer](logos/deezer.png) <!-- .element: class="logo white" -->
 
-## About…  Xavier F. Gouchet 
+## About… Xavier F. Gouchet
 
-#### Android Architect <!-- .element: class="fragment" -->
-#### ‘Mr Tools’ / CI / UT <!-- .element: class="fragment" -->
-#### Fluent in Android since Cupcake <!-- .element: class="fragment" -->
+#### Lead Android Engineer at WorkWell 
 
-###### <span class="fragment"><a>@xgouchet</a> on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, …</span>
+#### Fluent in Android since Cupcake
+
+
+##### [@xgouchet]() on <i class="fa fa-github" aria-hidden="true"></i>, <i class="fa fa-stack-overflow" aria-hidden="true"></i>, <i class="fa fa-linkedin" aria-hidden="true"></i>, <i class="fa fa-twitter" aria-hidden="true"></i>, <i class="fa fa-medium" aria-hidden="true"></i>, …
+
++++?image=assets/Slides_WW_EN.png&size=cover
+
++++
+
+### Get the Slides at 
+
+## [bit.ly/Link](http://bit.ly/Link)
 
 ---
 
@@ -46,16 +54,12 @@ followedBy(someCode);
 
 ### With some lists
 
- - Appearing<!-- .element: class="fragment" -->
- - One<!-- .element: class="fragment" -->
- - by<!-- .element: class="fragment" -->
- - one…<!-- .element: class="fragment" -->
-
----
-
-![Fire](https://i.makeagif.com/media/9-13-2015/ha2UMs.gif)
-
-##### Fire !
+@ul
+ - Appearing
+ - One
+ - by
+ - one…
+@ulend
 
 ---
 
