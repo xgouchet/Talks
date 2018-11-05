@@ -16,12 +16,12 @@ _Wild Code School_
 +++
 
 ## What we do at Workwell
-# <img src="logos/workwell.png" class="logo-inline"/>
+
+![](img/workwell.jpg)   <!-- .element: class="photo" -->
 
 +++
 
 ## And before that ? 
-### <img src="logos/deezer.png" class="logo-inline"/>
 
  - Team of 18 developers (on Android only)
  - Multiple focus teams
@@ -35,7 +35,7 @@ _Wild Code School_
 
 ## What is Pair Programming
 
-![](img/pair_programming.jpg)   <!-- .element: class="photo" -->
+![](img/pair_programming.png)   <!-- .element: class="photo" -->
 
 +++
 
