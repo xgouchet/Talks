@@ -1,9 +1,7 @@
 
-# Team Work
+# Team Work, Code Quality & Ethics
 
-#### Because you can't always build an app all by yourself
-
-_Wild Code School_ 
+##### _Wild Code School_ 
 
 ---
 
@@ -15,48 +13,53 @@ _Wild Code School_
 
 +++
 
-## What we do at Workwell
+### What we do at Workwell
 
-![](img/workwell.jpg)   <!-- .element: class="photo" -->
+@img[large photo](img/workwell.jpg)
 
 +++
 
-## And before that ? 
+### And before that ? 
 
- - Team of 18 developers (on Android only)
- - Multiple focus teams
- - Remote work
+#### 2001, my first line of code…
+
+```java
+public class Main{
+
+    public static void main(String[] args) {
+
+        System.out.println("Hello World");
+
+    }
+
+}
+```
+
++++
+
+### … and much more
+
+@img[tiny ghost](logos/dassault_systemes.png)
+@img[tiny ghost](logos/isart_digital.png)
+
+@img[tiny ghost](logos/oodrive.png)
+@img[tiny ghost](logos/deezer.png)
 
 ---
 
-# Pair Programming
+## Team Work
 
-+++
-
-## What is Pair Programming
-
-![](img/pair_programming.png)   <!-- .element: class="photo" -->
-
-+++
-
- - Driver / Navigator
- - Projector Programming
- - Buddy Programming
-
----
-
-## Why ? 
-
-#### The purposes of pair programming   
+@img[large photo](img/teamwork.jpg)
 
 +++
 
 ### Find the best solution on a problem
 
- - Discussion before typing
+ - Generate discussions
      - on the problem
      - on the context
      - on the possible solutions
+ - Tackle the complexity by having two minds holding the big picture 
 
 +++
 
@@ -64,14 +67,14 @@ _Wild Code School_
 
  - Avoid easy mistakes
  - More probability to find edge cases
+ - Makes sure that urgent ≠ botched
 
 +++
 
 ### Generate discussion around…
 
  - Choices  
-     - Algorithm  
-     - Data Structure  
+     - Algorithm / Data Structure  
      - Architecture 
      - Libraries 
  - Features 
@@ -91,6 +94,21 @@ _Wild Code School_
 
  - Onboard junior / new developers 
  - Get a tour of changes after a break 
+ - Combine different skills / expertise 
+
+---
+
+## Team Work: Pair Programming
+
+@img[large photo](img/pair_programming.png)
+
++++
+
+### The forms of “pair” programming
+
+ - Driver / Navigator
+ - Projector Programming
+ - Buddy Programming
 
 +++
 
@@ -100,178 +118,60 @@ _Wild Code School_
  - More intense than working alone 
  - Human conflicts 
 
++++
+
+### When ?
+
+ - Complex programming tasks
+ - Urgent long tasks*
+ - Training / Knowledge sharing
+
++++
+
+### The <em>Do</em>s and <em>Dont</em>s
+
+ - No silent driver
+ - Pair Carefully
+     - Avoid large disparity
+     - Avoid affinity issues  
+ - Switch often
+ - Take breaks: Relax, Clear your mind, Take a step back
+    
 ---
 
-## When ?
+## Team Work: Code Reviews
 
-#### The right time to do pair programming
-
-+++
-
-### Complex programming tasks
-
- - Combine different skills / expertise 
- - Tackle the complexity by having two minds holding the big picture 
+@img[large photo](img/code_review.png)
 
 +++
 
-### Urgent long tasks*
+### The forms of Code Review
 
- - Bring juniors up to speed 
-     - *if it actually speeds things 
- - Makes sure that urgent ≠ botched 
-
-+++
-
-### Training / Knowledge sharing
-
- - Give a tour of complex/old parts 
- - Explain advanced patterns / libraries 
-
----
-
-## How ?
-
-#### The <em>Do</em>s and <em>Dont</em>s of pair programming
-
-+++
-
-### No silent driver
-
- - Always explain what you're doing, and why
-
-+++
-
-### Pair Carefully
-
- - Avoid large disparity
- - Avoid affinity issues
-
-+++
-
-### Switch often
-
- - Share with everyone
- - Mix the team
-
-+++
-
-### Take breaks
-
- - Relax
- - Clear your mind
- - Take a step back
-
----
-
-# Code Reviews
-
-+++
-
-## What is Code Review
-
-![](img/code_review.png)   <!-- .element: class="photo" -->
-
----
-
-## Why ? 
-
-#### The purposes of code reviews
-
-+++
-
-### Find defects early
-
- - Logic fallacies 
- - Typos, spelling 
- - Edge cases 
- - Potential technical debt  
-
-+++
-
-### Harmonize the code base
-
- - Code style 
- - Naming conventions 
- - Architecture 
- - Libraries 
-
-+++
-
-### Generate discussion around…
-
- - Choices  
-     - Algorithm  
-     - Data Structure  
-     - Architecture 
-     - Libraries 
- - Features 
- - Best practices 
-
-+++
-
-### Team Building
-
- - Cohesion 
- - Trust 
- - Lower “Linkedin factor” 
- - Asynchronous Pair Programming 
-
-+++
-
-### Share knowledge
-
- - Onboard junior / new developers 
- - Everyone has something to teach 
- - Everyone has something to learn 
-
-+++
-
-### Downsides of code review
-
- - More time spent per ticket / less time spent delivering feature 
- - Senior developer frustration 
-
----
-
-## When ?
-
-#### The right time to do code reviews
-
-+++
-
-### “Automatic” code review
-
- - Static Analysis  
- - Tests (Unit, Integrated, Functionnal) 
+ - Remote 
+ - Pair Review
+ - Review Meeting
 
 +++
 
 ### Pre-commit
 
-#### Pro 
-
- - Quality ensured before merge 
- - All code must be reviewed 
-
-#### Cons 
-
- - Productivity impact 
- - Back & forth Hell ™ 
-
+ - Pro 
+     - Quality ensured before merge 
+     - All code must be reviewed  
+ - Cons 
+     - Productivity impact 
+     - Back & forth Hell ™ 
+ 
 +++
 
 ### Post-commit
 
-#### Pro 
-
- - Continuous development 
- - Limit git conflicts 
-
-#### Cons 
-
- - Bug can ship to production 
- - Resolution can become non trivial afterwards 
+ - Pro 
+     - Continuous development 
+     - Limit git conflicts 
+ - Cons 
+     - Bug can ship to production 
+     - Resolution can become non trivial afterwards 
 
 +++
 
@@ -283,15 +183,9 @@ _Wild Code School_
  - random checks 
  - … ? 
 
----
-
-## Who ?
-
-#### Let the right people do the review
-
 +++
 
-### Remote code review
+### Let the right people do the review
 
  - Anyone with access to GitHub / … 
  - Team lead 
@@ -299,51 +193,15 @@ _Wild Code School_
 
 +++
 
-### Pair review with another developer
+### The <em>Do</em>s and <em>Dont</em>s
 
- - Provide a single feedack 
- - Compare different viewpoints 
- - Tone down negative feedbacks 
-
-+++
-
-### Code Review Meeting with the author
-
- - 3 to 7 attendees 
- - Only for non trivial reviews 
- - Mentor the author 
- - Get in depth view 
- - Discuss alternatives 
- - Immediate feedback 
-
----
-
-## How ?
-
-#### The <em>Do</em>s and <em>Dont</em>s of code review
-
-+++
-
-### Writing reviewable code
-
- - Keep the commits short 
-     - `git add --patch` / `git add -p`
- - Comment the code 
- - Use a proper commit message 
-     - CR Brief for non trivial commits 
- - Link to the ticket 
-
-+++
-
-### Before submitting, review your own code
-
- - Find easy to spot issues 
-     - Typos 
-     - Commented code 
-     - Duplicates / possible refactoring 
-     - Copy / Paste errors 
- - Take a step back on your code 
-
+ - Writing reviewable code
+     - Keep the commits short :  
+`git add --patch` / `git add -p`
+     - Comment the code
+     - Use a proper commit message
+     - Individual commits don't need to compile, the PR does
+ - Before submitting, review your own code
 
 +++
 
@@ -412,18 +270,209 @@ _Wild Code School_
  - Accept the critique 
      - (even if it means more work for you) 
 
++++
+
+### Going Further
+
+[codereview.stackexchange.com](https://codereview.stackexchange.com)
+
 ---
 
-# Overall behavior
+## Code Quality: Tests
+
+@img[large photo](img/dummy.jpg)
 
 +++
 
+### What are the goals of tests ?
+
+ - Verify that the code works
+ - Make the contract explicit
+ - Guide the development (TDD)
+ - Prevent regressions
+ - Ensure retrocompatibility & ease maintenance
+ - Increase our confidence in the code
+
++++
+
+> “Your code is meant to be executed. Testing is the best way to make sure it actually is executed.”
+
++++
+
+### The forms of tests
+
+ - Unit tests
+ - Integration tests 
+ - Functionnal tests (aka end to end tests)
+ - Test Driven Development
+
++++
+
+### Reasons not to write tests
+
+ - I don't need tests (“Testing is Doubting”)
+ - I don't have time
+ - I don't know how to write tests
+
++++
+
+### What not to test ?
+
+ - 3ʳᵈ party libraries (npm modules, …)
+ - Framework (Vue, Angular, …)
+ - Network / API
+ - Language (JS, Typescript, toolchain, …)
+ - Trivial code (getter/setters, …)
+
++++
+
+### What to test ?
+
+ - Decision logic (if, switch, when, …)
+ - Input → Output
+ - (De)serialization / transformation (manual only)
+ - Callbacks events
+ - Critical code
+
++++
+
+### How to write Tests
+
+ - Isolate the Unit
+ - Write down the Unit’s purpose
+ - Write down known (and unknown) use cases
+
++++
+
+### Test golden rules
+
+- fast to execute
+- reproducible
+- reliable
+
+
++++
+
+### The TDD recipe
+
+@img[large ghost](img/tdd_loop.png)
+
++++
+
+### Going further
+
+ - Read the best practice for your language / framework
+ - Explore other patterns
+     - BDD
+     - Mutation testing
+     - Fuzzy testing
+
+---
+
+## Code Quality: Static Analysis
+
+@img[large photo](img/analysis.jpg)
+
++++
+
+### The forms of static analysis (aka lint)
+
+ - Style conventions
+ - Bad practices
+ - Programming errors
+ - Potential bugs
+
+---
+
+## Ethics in programming
+
+@img[large photo](img/chidi.jpg)
+
++++
+
+### Definitions
+
+ - Legal / Illegal / Unlawful
+
+> Ethics and morality are subjective. 
+> For the first time, the answer is not `true` or `false`
+
++++
+
+### Why talk about ethics ?
+
+> In this world, with great power there must also come…  
+> great responsibility!
+> 
+> Stan Lee
+
++++
+
+### Don't code the features blindly
+
+> What would your users say if they were listening to your meeting? Would you make the same choice? 
+
++++
+
+### To ship or not to ship
+
+> Should we ship a Minimum Viable Product ? Should we fix every single bug ? 
+
++++
+
+### Take ownership of the codebase
+
+> If you see an issue in someone else’s code, it becomes your responsibility too.
+
++++
+
+### Anticipate Misuse
+
+> Deep Learning is a armless technology, right ?
+
++++
+
+### Going Further
+
+ - `The Programmer's Oath` (Bob Martin)
+ - `The IEEE & ACM manifesto`
+ - [Dark Patterns](https://darkpatterns.org/)
+
+---
+
+## The proper mindset
+
+@img[large photo](img/brain.jpg)
+
++++
+
+### The proper mindset… Team work
+
  - Stay open minded 
+ - Accept imperfection
  - Make it about the code, not the people 
  - Don't start the flame war 
  - Share your knowledge 
  - Give as much as you receive 
 
++++
+
+### The proper mindset… Tests
+
+ - Bugs are not failure but insights
+ - When you fix a bug, write a test for it
+ - Grow your code and tests hand in hand…
+    - … one step at a time
+ - Always try to think about what can go wrong
+ - Test is code
+
+
++++
+
+### The proper mindset… Ethics 
+ - Don't take anything for granted
+ - Think before you code anything
+ - Take ownership of the code / the product / the company
 
 ---
 
@@ -431,6 +480,5 @@ _Wild Code School_
 
 ### Any Question ? 
 
-#### See also [codereview.stackexchange.com](https://codereview.stackexchange.com)
 
 
