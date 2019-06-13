@@ -54,7 +54,6 @@
 }
 
 .reveal img.photo { 
-    padding: 8px 8px 8px 8px;
     background : #efebe9;
     height : 7.5em;
     /*width : 10em;*/
@@ -64,14 +63,22 @@
 
 .reveal img.large {
     height : 9em;
+    padding: 12px 12px 12px 12px;
 }
 
 .reveal img.medium {
-    height : 7.5em;
+    height : 6em;
+    padding: 8px 8px 8px 8px;
 }
 
 .reveal img.small {
-    height : 3.5em;
+    height : 3em;
+    padding: 4px 4px 4px 4px;
+}
+
+.reveal img.tiny {
+    height : 1.5em;
+    padding: 2px 2px 2px 2px;
 }
 
 .reveal img.ghost {
