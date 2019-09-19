@@ -127,8 +127,8 @@
 .reveal li code {
     background : #ecf0f1;
     color : #c0392b;
-    padding : .15em;
-    border-radius: .25em;
+    padding : .05em;
+    border-radius: .25em; 
     border : 0;/*1px solid #e74c3c !important;*/
     font-size : 80%;
 }

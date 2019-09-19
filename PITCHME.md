@@ -1,5 +1,5 @@
 
-# Team Work, Code Quality & Ethics
+## Team Work, Code Quality & Ethics
 
 ##### _Wild Code School_ 
 
@@ -68,6 +68,12 @@ public class Main{
  - Avoid easy mistakes
  - More probability to find edge cases
  - Makes sure that urgent ≠ botched
+
++++
+
+### Cost of fixing bugs
+
+@img[large photo](img/cost_bugs.jpg)
 
 +++
 
