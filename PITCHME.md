@@ -23,7 +23,7 @@ _Droidcon Berlin 2017_
 > 
 > — Placebo
 
-+++
+---
 
 
  - Unit tests ? <!-- .element: class="fragment" -->
@@ -41,7 +41,7 @@ _Droidcon Berlin 2017_
 #### ∴ 
 ## Tests have bugs 
 
-+++
+---
 
 ### Tests ensure the quality of your code, 
 ## but what ensures the quality of your tests?
@@ -54,51 +54,50 @@ _Droidcon Berlin 2017_
 > 
 > — Julie Andrews
 
-+++
+---
 
 ![Unit Tests](img/0_1_unit_tests.jpg) <!-- .element: class="photo" -->
 
 ##### Unit Tests
 
-+++
+---
 
 ![Integration Tests](img/0_2_integration_tests.jpg) <!-- .element: class="photo" -->
 
 ##### Integration Tests
 
-+++
+---
 
 ![Functionnal Tests](img/0_3_functionnal_tests.jpg) <!-- .element: class="photo" -->
 
 ##### Functionnal Tests
 
-+++
+---
 
 ![TDD](img/0_4_tdd.jpg) <!-- .element: class="photo" -->
 
 ##### Test Driven Development
 
-+++
+---
 
 ![Code Coverage](img/0_5_code_coverage.jpg) <!-- .element: class="photo" -->
 
 ##### Code Coverage
 
-+++
+---
 
 ![100% Coverage](img/1_1_100_coverage.jpg) <!-- .element: class="photo" -->
 
 “SUCCESS: 26/26 (100%) Tests passed” — [_@bloerwald_](http://www.twitter.com/bloerwald) 
 
-
-+++
+---
 
 > “When a measure becomes a target, 
 > it ceases to be a good measure.”
 > 
 > — Goodhart’s Law
 
-+++
+---
 
 > “The more any indicator is used for decision-making, 
 > the more subject it will be to corruption pressures.”
@@ -117,7 +116,7 @@ _Droidcon Berlin 2017_
      - Ourselves in the future  <!-- .element: class="fragment" -->
  - Ensure retrocompatibility <!-- .element: class="fragment" -->
 
-+++
+---
 
 #### Bad tests can give 
 ### a false sense of security
@@ -132,7 +131,7 @@ _Droidcon Berlin 2017_
 > 
 > — Oingo Boingo
 
-+++
+---
 
 ![Professor X](img/2_1_xavier.jpg) <!-- .element: class="float-right" -->
 
@@ -144,7 +143,7 @@ _Droidcon Berlin 2017_
 1. ??? <!-- .element: class="fragment" -->
 1. Profit <!-- .element: class="fragment" -->
 
-+++
+---
 
 ### Step 1
 
@@ -152,7 +151,7 @@ Write the tests <!-- .element: class="fragment" -->
 
 <span class="fragment">Make sure all the tests are green <span style="color:#16a085;font-size:150%;">✓</span></span>
 
-+++
+---
 
 ### Step 2
 
@@ -162,7 +161,7 @@ Make one or more modification to the source code <!-- .element: class="fragment"
 
 <small class="fragment">Mutation **should** break the behavior of the system</small>
 
-+++
+---
 
 ### ¹ What's a mutation ?
 
@@ -174,7 +173,7 @@ Make one or more modification to the source code <!-- .element: class="fragment"
  - Return values <!-- .element: class="fragment" -->
  - … <!-- .element: class="fragment" -->
 
-+++
+---
 
 ### Step 3
 
@@ -184,7 +183,7 @@ Watch the tests fail <!-- .element: class="fragment" -->
 
 … or not <!-- .element: class="fragment" -->
 
-+++
+---
 
 ![Magneto](img/2_2_magneto.jpg) <!-- .element: class="float-right" -->
 
@@ -196,7 +195,7 @@ Watch the tests fail <!-- .element: class="fragment" -->
  - System error <!-- .element: class="fragment" -->
  - Timeout <!-- .element: class="fragment" -->
 
-+++
+---
 
 ![Wolverine](img/2_3_wolverine.jpg) <!-- .element: class="float-right" -->
 
@@ -214,7 +213,7 @@ Watch the tests fail <!-- .element: class="fragment" -->
 > 
 > — Paul McCartney
 
-+++
+---
 
 ### Example 
 
@@ -233,7 +232,7 @@ void testCheck() {
 }
 ```
 
-+++
+---
 
 ### Example (mutated)
 
@@ -252,7 +251,7 @@ void testCheck() {
 }
 ```
 
-+++
+---
 
 
 ### Example (fixed)
@@ -273,7 +272,7 @@ void testCheck() {
 > 
 > — Natalie Grant
 
-+++
+---
 
 ### Gradle Plugin
 
@@ -290,7 +289,7 @@ dependencies {
 apply plugin: 'pl.droidsonroids.pitest'
 ```
 
-+++
+---
 
 ### Gradle Plugin (2.1+)
 
@@ -300,7 +299,7 @@ plugins {
 }
 ```
 
-+++
+---
 
 ### Configuration
 
@@ -311,11 +310,11 @@ pitest {
 }
 ```
 
-+++
+---
 
 ![](img/3_1_pitest_report.png)  <!-- .element: class="photo" -->
 
-+++
+---
 
 ![](img/3_2_hands_on.jpg)  <!-- .element: class="photo" -->
 
@@ -329,7 +328,7 @@ pitest {
 > 
 > — Tony Basil
 
-+++
+---
 
 ### Frequently asked questions
 
@@ -339,7 +338,7 @@ pitest {
  - Configurable <!-- .element: class="fragment" -->
  - Extensible <!-- .element: class="fragment" -->
 
-+++
+---
 
 ### Things to keep in mind
 
@@ -349,7 +348,7 @@ pitest {
  - Only simulate atomic faults <!-- .element: class="fragment" -->
  - Costly  <!-- .element: class="fragment" -->
 
-+++
+---
 
 ### My own recommendations
 
@@ -359,7 +358,7 @@ pitest {
  - Coverage value is not shared with management <!-- .element: class="fragment" -->
  - Always take results with a grain of salt <!-- .element: class="fragment" -->
 
-+++
+---
 
  - Java Framework : Pitest [pitest.org](http://www.pitest.org)
  - IntelliJ / Android Studio plugin : [github.com/zalando/zester](http://www.github.com/zalando/zester)
